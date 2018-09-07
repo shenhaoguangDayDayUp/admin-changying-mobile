@@ -14,7 +14,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@/style/main.styl'
 
 Vue.config.productionTip = false
-
+import  './components/index'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
