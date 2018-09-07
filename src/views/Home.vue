@@ -6,30 +6,30 @@
                                  v-model='drawer'>
                 <v-list dense
                         two-line>
-                  
-                    <v-list-group v-model="item.active"
-                                  v-for="item in items"
-                                  :key="item.title"
-                                  :prepend-icon="item.action"
+                    <v-list-group 
+                                  v-model="item.active"
+                                  v-for="item in $router.options.routes"
+                                  v-show="!item.hidden"
+                                  :key="item.name"
                                   no-action>
-                        <v-list-tile slot="activator">
+                        <v-list-tile slot="activator">   
                             <v-list-tile-content>
-                                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                                <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
-                        <template v-for="subItem in item.items">
+                        <template v-for="subItem in item.children">
                                 <v-list-tile 
-                                     :key="subItem.title"
-                                     :to='subItem.href'
+                                     :key="subItem.name"
+                                     :to='subItem.path'
                                      router
                                      ripple
                                      v-if='!subItem.children'>
                   
                                 <v-list-tile-content>
-                                    <v-list-tile-title>{{ subItem.title}}{{items.children}}</v-list-tile-title>
+                                    <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
                                 </v-list-tile-content>
                                 <v-list-tile-action>
-                                    <v-icon>{{ subItem.action }}</v-icon>
+                                    <v-icon></v-icon>
                                 </v-list-tile-action>       
                         </v-list-tile>
                          <template v-else>
@@ -40,10 +40,10 @@
                                         <v-icon>border_color</v-icon>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-list-tile-title>{{subItem.title}}</v-list-tile-title>
+                                        <v-list-tile-title>{{subItem.name}}</v-list-tile-title>
                                     </v-list-tile-content>
                                 </v-list-tile>
-                                <v-list-tile class="px-5" v-for="subMenu in subItem.children"
+                                <!-- <v-list-tile class="px-5" v-for="subMenu in subItem.children"
                                              :key="subMenu.title"
                                              :to='subMenu.href'
                                              router
@@ -54,7 +54,7 @@
                                     <v-list-tile-action>
                                         <v-icon>{{ subMenu.action }}</v-icon>
                                     </v-list-tile-action>
-                                </v-list-tile>
+                                </v-list-tile> -->
                             </v-list-group>
                         </template>
                      </template>
@@ -112,7 +112,7 @@ import { common, user } from "@/logic";
 import { loginApi } from "@/api";
 import { mapGetters } from "vuex";
 export default {
-  name: "Layout",
+  name: "Home",
   computed: {
     userName() {
       return user.getLoginUser().name;
@@ -197,26 +197,6 @@ export default {
           title: "Education",
           items: [{ title: "List Item" }]
         },
-        {
-          action: "directions_run",
-          title: "Family",
-          items: [{ title: "List Item" }]
-        },
-        {
-          action: "healing",
-          title: "Health",
-          items: [{ title: "List Item" }]
-        },
-        {
-          action: "content_cut",
-          title: "Office",
-          items: [{ title: "List Item" }]
-        },
-        {
-          action: "local_offer",
-          title: "Promotions",
-          items: [{ title: "List Item" }]
-        }
       ]
     };
   }

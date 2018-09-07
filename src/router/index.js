@@ -2,94 +2,88 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import {common} from '@/logic'
 import store from '@/store'
-
+import Home from '../views/Home.vue'
 Vue.use(Router)
-
-// export default new Router({
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'HelloWorld',
-//       component: HelloWorld
-//     }
-//   ]
-// })
-
-
 const route =new Router({
-  scrollBehavior (to, from, savedPosition) {
-      setTimeout(() => {
-        if (savedPosition) {
-          // console.log(to)
-          // console.log(savedPosition)
-          // console.log(to.matched.some(m => m.meta.scrollToTop))
-            if(to.matched.some(m => m.meta.scrollToTop)){
-              scrollTo(0, 0)
-              return { x: 0, y: 0 }
-            }
-            scrollTo(0, savedPosition.y)
-            return savedPosition
-       
-        } else {
-              scrollTo(0, 0)
-          return { x: 0, y: 0 }
-        }
-      }, 100)
-  },
-routes: [
-  {
-    path: '/',
-    component: () => import('@/components/layout/common'),
-    redirect: '/vip',
-    children: [
+  routes: [
       {
-        path: '/vip',
-        name: 'Vip',
-        component: () => import('@/page/menber/VipMenber'),
-      },
-      {
-        path: '/menber',
-        name: 'Menber',
-        component: () => import('@/page/menber/MenberList.vue'),
-      },
-      {
-        path: '/test1',
-        name: 'Test1',
-        component: () => import('@/page/main/test'),
-      },
-      {
-        path: '/test2',
-        name: 'Test2',
-        component: () => import('@/page/main/test'),
-      },
-      {
-        path: '/test3',
-        name: 'Test3',
-        component: () => import('@/page/main/test'),
-      },
-    ]
-  },
-  {
-      path: '*',
-      redirect:'/login'
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    meta:{
-      scrollToTop:true
+        path: '/login',
+        component: ()=>import('../views/Login.vue'),
+        name: 'Login',
+        id:-1,
+        hidden: true
     },
-    component: () => import('@/page/common/Login'),
+    {
+        path: '/404',
+        component: ()=>import('../views/404.vue'),
+        name: '',
+        hidden: true,
+        id:-1
+    },
+    {
+        path: '/',
+        component: Home,
+        active:false, 
+        name: '总览',
+        id:0,
+        redirect:'/overView',
+        iconCls: ['fa','tachometer-alt'],
+        leaf:true,
+        show:false,
+        path: '/overView',
+        component: ()=>import('../views/charts/overView.vue'),
+    },
+    {
+        path: '/',
+        active:false,
+        component: Home,
+        name: '数据分析',
+        id:7, 
+        iconCls: ['fas','chart-line'],
+    },
+    {
+        path: '/',
+        active:false,
+        component: Home,
+        name: '会员中心',
+        id:1, 
+        iconCls: ['fas','user'],//图标样式class
+        // redirect: '/vipList', 
+        children: [
+            { active:false, path: '/mbrList',menuShow:true, component: ()=>import('../views/mbrcenter/mbrList.vue'), name: '会员名单',parentId:1,id:11 },
+            {active:false,  path: '/mbrDetail', menuShow:false,component: ()=>import('../views/mbrcenter/mbrDetail.vue'), name: '会员详情',parentId:11 ,id:16,parentId1:10,parentId2:13},// 会员、贵宾、黑名单共用一个会员详情
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        active:false, 
+        name: '游戏中心',
+        id:2,
+        iconCls: ['fa' ,'gamepad'],
+        children: [
+            { active:false, path: '/gameList',menuShow:true, component: ()=>import('../views/gameCenter/gameList.vue'), name: '游戏清单',parentId:2,id:20},
+            {active:false,  path: '/gameDetail',menuShow:false, component: ()=>import('../views/gameCenter/gameDetail.vue'), name: '游戏详情',parentId:20,id:21},
+        ]
+    },
+    {
+      path: '/',
+      component: Home,
+      active:false, 
+      id:3,
+      name: '资金中心',
+      iconCls: ['fa' ,'credit-card'],
   },
- 
- 
-
-
-]
+    {
+        path: '*',
+        hidden: true,
+        redirect: { path: '/404' }
+    }
+  ]
 })
+
 route.beforeEach(function (to, from, next) {
  store.dispatch('toggleRoutes', to)
-
   if(to.name == 'Login'){
     next()
   }else{
@@ -101,11 +95,5 @@ route.beforeEach(function (to, from, next) {
     })
     }
   }
-  
-})
-
-route.afterEach(function (to) {
-
-
 })
 export default route

@@ -16,7 +16,11 @@
     "material-design-icons-iconfont": "^3.0.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+<<<<<<< HEAD
     "vuetify": "^1.2.3",
+=======
+    "vuetify": "^1.2.2",
+>>>>>>> 15cbf1b7326510987c5fabcc9bc7dcbcdef9da86
     "vuex": "^3.0.1"
   },
   "devDependencies": {
