@@ -21,7 +21,7 @@ module.exports = {
     poll: false, // 
     proxyTable: {
       '/api':{
-        target:"http://139.198.176.248",
+        target:"http://changyingyule.cn",
         changeOrigin:true,//是否需要跨域
         pathRewrite:{
           '^/api':''
