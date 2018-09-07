@@ -29,7 +29,8 @@
                                     <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
                                 </v-list-tile-content>
                                 <v-list-tile-action>
-                                    <v-icon></v-icon>
+                                    <v-icon :icon="item.iconCls"></v-icon>
+                                    <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
                                 </v-list-tile-action>       
                         </v-list-tile>
                          <template v-else>
@@ -202,3 +203,7 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+
+</style>
+
