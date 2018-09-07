@@ -6,7 +6,8 @@ import router from './router'
 import Vuetify from 'vuetify'
 import store from '@/store'
 Vue.use(Vuetify)
-console.log(Vuetify)
+
+import 'font-awesome/scss/font-awesome.scss'
 
 import 'vuetify/src/stylus/main.styl'
 import 'vuetify/src/stylus/settings/_colors.styl'
