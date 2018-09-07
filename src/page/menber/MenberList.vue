@@ -60,7 +60,7 @@
                     </template>
                 </v-data-table> -->
                     <k-table :tableSource='list'>
-                      <template slot="items" slot-scope="data">
+                      <template  slot-scope="data">
                           1{{data}}1
                         </template>
                     </k-table>

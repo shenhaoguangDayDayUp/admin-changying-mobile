@@ -11,8 +11,6 @@ export default {
     },
   },
   render(h) {
-
-
     const self = this
 
     return h(
@@ -26,8 +24,27 @@ export default {
     );
   },
   methods: {
+     renderTemplate(h){
+         console.log(this.$slots)
+         return (
+             h('template',
+                 { 
+                    slot:'items',
+                    scopedSlots: { 
+                        default: props => {
+                            console.log(props)
+                        // return h('td',{
+                        //     domProps: {
+                        //     innerHTML: "取 消"
+                        //     }
+                        // })
+                   return (<td class="text-xs-right">{props.item}</td>)
+                  }
+                }
+             }
+         ))
+     },
     renderTable(h) {
-      
       return h(
         "v-data-table",
         {
@@ -37,23 +54,29 @@ export default {
           on: {}
         },
         [
-         this.tableSource.items.map(colum => {
-            return h("template", {
-              props: {
-                    
-               },
-               slot:'items',
-               scopedSlots: {
-                default: props => {
-                   
-                    return (<td class="text-xs-right">{props.item}</td>)
-                  }
-                }
-            });
-          })
+         this.renderTemplate(h)
         ]
       );
     }
   }
 };
 </script>
+// this.tableSource.items.map(colum => {
+//             return h("template", {
+//               props: {
+                        
+//                 },
+//                slot:'items',
+//                scopedSlots: {
+                
+//                 default: props => {
+//                 return h('td',{
+//                       domProps: {
+//                          innerHTML: "取 消"
+//                      }
+//                  })
+//                     // return (<td class="text-xs-right">{props.item}</td>)
+//                   }
+//                 }
+//             });
+//           })

@@ -74,6 +74,18 @@ const route =new Router({
       name: '资金中心',
       iconCls: ['fa' ,'credit-card'],
   },
+  {
+    path: '/',
+    component: Home,
+    active:false, 
+    name: '测试',
+    id:4,
+    iconCls: ['fa' ,'gamepad'],
+    children: [
+        { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '游戏清单',parentId:2,id:20},
+       
+    ]
+},
     {
         path: '*',
         hidden: true,
