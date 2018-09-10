@@ -6,63 +6,65 @@
                                  v-model='drawer'>
                 <v-list dense
                         two-line>
-                    <v-list-group 
+                     <template v-for="item in $router.options.routes">
+                       <v-list-tile v-if="item.leaf" :key="item.name" :to="item.children[0].path"> {{item.name}}</v-list-tile>
+                       <v-list-group v-else
                                   v-model="item.active"
-                                  v-for="item in $router.options.routes"
                                   v-show="!item.hidden"
                                   :key="item.name"
-                                  no-action>
-                        <v-list-tile slot="activator">   
-                            <v-list-tile-content>
-                                <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                        <template v-for="subItem in item.children">
-                                <v-list-tile 
-                                     :key="subItem.name"
-                                     :to='subItem.path'
-                                     router
-                                     ripple
-                                     v-if='!subItem.children'>
-                  
-                                <v-list-tile-content>
-                                    <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
-                                </v-list-tile-content>
-                                <v-list-tile-action>
-                                    <v-icon :icon="item.iconCls"></v-icon>
-                                    <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
-                                </v-list-tile-action>       
-                        </v-list-tile>
-                         <template v-else>
-                            <v-list-group  router ripple
-                                          sub-group>
-                                <v-list-tile slot="activator">
-                                    <v-list-tile-action>
-                                        <v-icon>border_color</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title>{{subItem.name}}</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <!-- <v-list-tile class="px-5" v-for="subMenu in subItem.children"
-                                             :key="subMenu.title"
-                                             :to='subMenu.href'
-                                             router
-                                             ripple>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title>{{ subMenu.title}}</v-list-tile-title>
-                                    </v-list-tile-content>
-                                    <v-list-tile-action>
-                                        <v-icon>{{ subMenu.action }}</v-icon>
-                                    </v-list-tile-action>
-                                </v-list-tile> -->
-                            </v-list-group>
-                        </template>
-                     </template>
+                                    no-action>
+                          <v-list-tile slot="activator">   
+                              <v-list-tile-content>
+                                  <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+                              </v-list-tile-content>
+                          </v-list-tile>
+                          <template v-for="subItem in item.children">
+                                  <v-list-tile 
+                                      :key="subItem.name"
+                                      :to='subItem.path'
+                                      router
+                                      ripple
+                                      v-if='!subItem.children'>
                     
-                       
-
-                    </v-list-group>
+                                  <v-list-tile-content>
+                                      <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
+                                  </v-list-tile-content>
+                                  <v-list-tile-action>
+                                      <v-icon :icon="item.iconCls"></v-icon>
+                                      <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
+                                  </v-list-tile-action>       
+                          </v-list-tile>
+                          <template v-else>
+                              <v-list-group  router ripple
+                                            sub-group>
+                                  <v-list-tile slot="activator">
+                                      <v-list-tile-action>
+                                          <v-icon>border_color</v-icon>
+                                      </v-list-tile-action>
+                                      <v-list-tile-content>
+                                          <v-list-tile-title>{{subItem.name}}</v-list-tile-title>
+                                      </v-list-tile-content>
+                                  </v-list-tile>
+                                  <!-- <v-list-tile class="px-5" v-for="subMenu in subItem.children"
+                                              :key="subMenu.title"
+                                              :to='subMenu.href'
+                                              router
+                                              ripple>
+                                      <v-list-tile-content>
+                                          <v-list-tile-title>{{ subMenu.title}}</v-list-tile-title>
+                                      </v-list-tile-content>
+                                      <v-list-tile-action>
+                                          <v-icon>{{ subMenu.action }}</v-icon>
+                                      </v-list-tile-action>
+                                  </v-list-tile> -->
+                              </v-list-group>
+                          </template>
+                          </template>
+                        </v-list-group>
+                        
+                       </template>  
+                    
+                    
                 </v-list>
 
             </v-navigation-drawer>
@@ -110,7 +112,7 @@
 </template>
 <script>
 import { common, user } from "@/logic";
-import { loginApi } from "@/api";
+import { loginApi } from "@/api/api";
 import { mapGetters } from "vuex";
 export default {
   name: "Home",

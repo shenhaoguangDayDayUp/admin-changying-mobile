@@ -29,9 +29,10 @@ const route =new Router({
         redirect:'/overView',
         iconCls: ['fa','tachometer-alt'],
         leaf:true,
-        show:false,
-        path: '/overView',
-        component: ()=>import('../views/charts/overView.vue'),
+        children:[
+            {menuShow:false,name:'总览',path: '/overView',component: ()=>import('../views/overview/overView.vue')}
+        ]
+        
     },
     {
         path: '/',
