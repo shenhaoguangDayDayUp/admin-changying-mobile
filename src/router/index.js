@@ -41,6 +41,15 @@ const router =new Router({
         name: '数据分析',
         id:7, 
         iconCls: ['fas','chart-line'],
+        children: [
+            {active:false,  path: '/rechargeTotalNumberChart', menuShow:true,component: ()=>import('../views/analysis/rechargeTotalNumberChart.vue'), name: '充值情況',parentId:7,id:71 },
+            {active:false,  path: '/mbrRechargeRanking', menuShow:true,component: ()=>import('../views/analysis/rechargeRanking.vue'), name: '充值排行榜',parentId:7 ,id:76},
+            {active:false, path: '/betTotalNumberChart',menuShow:true, component: ()=>import('../views/analysis/betTotalNumberChart.vue'), name: '下注情况',parentId:7,id:72 },
+            {active:false,  path: '/betRanking', menuShow:true,component: ()=>import('../views/analysis/betRanking.vue'), name: '下注排行榜',parentId:7 ,id:74},
+            {active:false,  path: '/prizeTotalNumberChart', menuShow:true,component: ()=>import('../views/analysis/prizeTotalNumberChart.vue'), name: '奖金情况',parentId:7 ,id:73},
+            {active:false,  path: '/prizeRanking', menuShow:true,component: ()=>import('../views/analysis/prizeRanking.vue'), name: '奖金排行榜',parentId:7 ,id:75},        
+            {active:false,  path: '/exchangeTotalNumberChart', menuShow:true,component: ()=>import('../views/analysis/exchangeNumberChart.vue'), name: '兑换情况',parentId:7 ,id:76},     
+        ]
     },
     {
         path: '/',

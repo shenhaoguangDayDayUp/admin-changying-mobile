@@ -157,9 +157,9 @@
     </div>
 </template>
 <script>
-import { memberApi } from "@/api";
+// import { memberApi } from "@/api/api";
 import { common } from "@/logic";
-import { mixin } from "@/minxis/search";
+import { mixin } from "@/mixins/search";
 export default {
   mixins: [mixin],
   name: "vip",
@@ -189,13 +189,13 @@ export default {
      var token = {
         headers: { "x-auth-token": common.getCommon("TOKEN") }
       }; 
-     await  memberApi.entity({id:this.form.mobileNumber},token)
+    //  await  memberApi.entity({id:this.form.mobileNumber},token)
     },
     async certain() {
       var token = {
         headers: { "x-auth-token": common.getCommon("TOKEN") }
       };
-      await memberApi.vipRemove({ id: this.detail.mobileNumber }, token);
+      // await memberApi.vipRemove({ id: this.detail.mobileNumber }, token);
       this.dialog = false;
       this.getList();
     },
@@ -207,7 +207,7 @@ export default {
       var token = {
         headers: { "x-auth-token": common.getCommon("TOKEN") }
       };
-      const { data } = await memberApi.memberList({ id: 0 }, token);
+      // const { data } = await memberApi.memberList({ id: 0 }, token);
       this.items = data;
     }
   },
