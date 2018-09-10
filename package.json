@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "0.0.22",
     "ajv": "^6.4.0",
     "axios": "^0.18.0",
+    "echarts": "^4.1.0",
     "font-awesome": "^4.7.0",
     "js-sha1": "^0.6.0",
     "material-design-icons-iconfont": "^3.0.3",

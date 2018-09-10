@@ -111,7 +111,7 @@
 <script>
 import { redeemApi, redeemTotalApi } from "@/api/api";
 import { common } from "@/logic";
-import { mixin } from "@/minxis/search";
+import { mixin } from "@/mixins/search";
 export default {
   mixins: [mixin],
   name: "vip",

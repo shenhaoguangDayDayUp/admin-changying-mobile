@@ -124,8 +124,8 @@
 <script>
 import { welfareApi, welfareTotalApi } from "@/api/api";
 import { common } from "@/logic";
-import { mixin } from "@/minxis/search";
-import { game } from "@/minxis/game";
+import { mixin } from "@/mixins/search";
+import { game } from "@/mixins/game";
 export default {
   mixins: [mixin,game],
   name: "vip",
