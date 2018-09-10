@@ -32,20 +32,21 @@
                                       :to='subItem.path'
                                       router
                                       ripple
-                                      v-if='!subItem.children' no-action>
+                                      v-if='!subItem.children&&subItem.menuShow' no-action>
                                   <v-list-tile-content>
                                       <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
                                   </v-list-tile-content>      
                           </v-list-tile>
                           <template v-else>
-                              <v-list-group  router ripple
+                              <v-list-group v-if='subItem.menuShow'
+                                router ripple
                                             sub-group>
                                   <v-list-tile slot="activator">
                                       <v-list-tile-action>
                                           <v-icon>border_color</v-icon>
                                       </v-list-tile-action>
                                       <v-list-tile-content>
-                                          <v-list-tile-title>{{subItem.name}}</v-list-tile-title>
+                                          <v-list-tile-title>{{subItem.name}}11111</v-list-tile-title>
                                       </v-list-tile-content>
                                   </v-list-tile>
                                   <!-- <v-list-tile class="px-5" v-for="subMenu in subItem.children"
@@ -103,11 +104,25 @@
                 </v-menu>
             </v-toolbar>
 
-            <v-content>
+            <!-- <v-content> -->
                 <v-container fluid>
+                   <v-layout row wrap>
+                      <v-flex   xs12>
+                          <v-breadcrumbs class="px-0" divider="/">
+                            <v-breadcrumbs-item
+                              v-for="item in breadcrumbs"
+                              :key="item.text"
+                              :disabled="item.disabled"
+                            >
+                            {{ item.text }}
+                          </v-breadcrumbs-item>
+                        </v-breadcrumbs>
+                       </v-flex>
+                   </v-layout>
+
                     <router-view></router-view>
                 </v-container>
-            </v-content>
+            <!-- </v-content> -->
             <!-- <v-footer app></v-footer> -->
         </v-app>
     </div>
@@ -133,11 +148,65 @@ export default {
       await loginApi.logout({}, token);
       common.clear();
       this.$router.push({ name: "Login" });
-    }
+    },
+     findActive(name, list,callBack) {
+      for (var i = 0; i < list.length; i++) {
+          if(name == list[i].name){ // 找到默认 active 改成true
+            callBack(list[i])
+            break;
+          }
+          if(list[i].hasOwnProperty('children')){
+            this.findActive(name,list[i].children,callBack)
+          }
+      }
+    },
+       findParent(parentId, list,callBack,arr) {
+      for (var i = 0; i < list.length; i++) {
+        // console.log('parentId:---',parentId)
+        //  console.log(list[i].id)
+          if(parentId == list[i].id){
+            arr.push(list[i])
+            callBack(arr)
+            if(list[i].hasOwnProperty('parentId')){
+                this.findParent(list[i].parentId,this.$router.options.routes,callBack,arr)
+            }
+          }
+          if(list[i].hasOwnProperty('children')){
+            this.findParent(parentId,list[i].children,callBack,arr)
+          }
+      }
+    },
   },
   watch: {
     $route: {
       handler(val) {
+             var list =[]
+        this.$nextTick(res=>{
+           this.findActive(this.$route.name,this.$router.options.routes,(res)=>{
+               let dad = res.parentId; 
+               this.findParent(dad,this.$router.options.routes,(arr)=>{
+               // 面包屑
+                this.breadList = [...arr,res];// 合并数组
+                this.breadList =  this.breadList.sort(function(item1,item2){
+                    if(item1.id>item2.id){
+                      return 1
+                    }
+                  })
+                this.breadcrumbs = this.breadList.map((res,index)=>{
+                    if(this.breadList.length -1 !=index){
+                        return {text:res.name,disabled:false}
+                    }else{
+                        return {text:res.name,disabled:true}
+                    }
+                   
+                })
+
+               
+             },list)
+
+       })
+
+        })
         //  console.log(val)
         // if(val.path){
         //     this.
@@ -152,11 +221,11 @@ export default {
       breadcrumbs: [
         {
           text: "Dashboard",
-          disabled: true
+          disabled: false
         },
         {
           text: "Link 1",
-          disabled: true
+          disabled: false
         },
         {
           text: "Link 2",

@@ -90,7 +90,7 @@ const router =new Router({
         {path:'/reword',menuShow:true,component: ()=>import('../page/founding/Reword'), name:'奖金',parentId:3,id:33,active:false},
         {path:'/convert',menuShow:true,component: ()=>import('../page/founding/Convert'), name:'兑换',parentId:3,id:34,active:false},
         {path:'/bonusPool',menuShow:true,component: ()=>import('../page/founding/BounsPool'), name:'奖金池',parentId:3,id:35,active:false},
-        {path:'/bonusDetail/:id',menuShow:true,component: ()=>import('../page/founding/BounsPoolDetail'), name:'奖金池详情',parentId:3,id:36,active:false},
+        {path:'/bonusDetail/:id',menuShow:false,component: ()=>import('../page/founding/BounsPoolDetail'), name:'奖金池详情',parentId:35,id:36,active:false},
         {path:'/issuse',menuShow:true,component: ()=>import('../page/founding/IssusCost'), name:'发行费',parentId:3,id:37,active:false},
         {path:'/walfare',menuShow:true,component: ()=>import('../page/founding/Walfare'), name:'公益金',parentId:3,id:38,active:false},
         
