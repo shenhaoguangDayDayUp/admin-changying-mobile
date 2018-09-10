@@ -71,7 +71,7 @@ body {
 </style>
 
 <script>
-import { loginApi } from "@/api";
+import { loginApi } from "@/api/api";
 import { common,user } from "@/logic";
 import sha1 from "js-sha1";
 export default {

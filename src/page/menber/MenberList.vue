@@ -90,7 +90,7 @@
     </div>
 </template>
 <script>
-import { memberApi } from "@/api";
+// import { memberApi } from "@/api";
 import { common } from "@/logic";
 export default {
   name: "vip",
