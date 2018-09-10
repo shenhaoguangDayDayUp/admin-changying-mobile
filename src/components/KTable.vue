@@ -19,7 +19,8 @@ export default {
       type: [String,Number],
       default: function() {
         return 1;
-      } 
+      },
+ 
     }
   },
   computed: {
@@ -48,9 +49,10 @@ export default {
   },
   methods: {
     renderPage(h){
-        if(this.index==0){
+        if(this.index == 0){
             this.index = 1
         }
+      
       return  h('div',{class:{
           "text-xs-center":true,
           "m-t-20":true
@@ -60,6 +62,7 @@ export default {
                 on:{
                     'input':(value)=>{
                       this.index = value
+                      this.$emit('pageChage',index)
                     },
                 }
             },)
