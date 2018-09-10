@@ -33,29 +33,23 @@ axios.interceptors.response.use(function (response) {
 
  return response;
 }, function (error) {
+    console.log(window)
     switch (error.response.status) { //这里修改了，如果出现500/502之类的，页面弹框里会出现一大堆报错。
+        
         case 401:
-            // window.global.$vux.toast.show({
-            //     text: error.response.data,
-            // });
+            window.global.$router.push({path:'/login',query:{back:window.global.$route.fullPath}})
             break;
         case 456:
-            // window.global.$vux.toast.show({
-            //     text: error.response.data,
-            // });
+        // window.global.$message.error(error.response.data);
             break;
         case 567:
-            // window.global.$vux.toast.show({
-            //     text: '系统错误!',
-            // });
+        // window.global.$message.error('操作失败！');
             break;
         default:
-            // window.global.$vux.toast.show({ // 除去文档中的三种报错之外的东西全部报错'系统错误!稍后重试!'
-            //     text: '系统错误!稍后重试!'
-            // });
+        // window.global.$message.error('操作失败！');
             break;
     }
-    window.global.$vux.loading.hide();
+    // window.global.$vux.loading.hide();
     document.body.style.overflow = 'auto';
     return Promise.reject(error);
 }); 
@@ -157,29 +151,8 @@ function send(url, data, otherOptions, method = 'get') {
         axios.request(config).then((res) => {
             // if (!res.data) res.data = { code: 200 };
             resolve(res);
-        }).catch(({ response }) => {
-            let { data } = response;
-            if(response.status == '401'){
-                // 报401要重新去拿token,但必须要有账户和密码才能去自动登录。
-                if(user.getLoginUser('$LoginUser')){
-                    axios.put('/member/login', JSON.parse(localStorage.getItem('$LoginUser')))
-                        .then(function (response) {
-                            sessionStorage.setItem("TOKEN", response.headers['x-auth-token']);
-                            // window.global.$root.eventHub.$emit('notification')
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                }else{
-                    // console.log(401,401)
-                    // window.global.$router.push({
-                    //     path:'/login'
-                    // })
-                }
-            }else {
-                // reject(data); //报错信息在response里面,故返回response就好
-                reject(response);
-            }
+        }).catch((err) => {
+            console.log(err)
         })
     })
 }

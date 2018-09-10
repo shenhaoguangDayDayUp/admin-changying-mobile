@@ -4,7 +4,7 @@ import {common} from '@/logic'
 import store from '@/store'
 import Home from '../views/Home.vue'
 Vue.use(Router)
-const route =new Router({
+const router =new Router({
   routes: [
       {
         path: '/login',
@@ -95,7 +95,7 @@ const route =new Router({
   ]
 })
 
-route.beforeEach(function (to, from, next) {
+router.beforeEach(function (to, from, next) {
  store.dispatch('toggleRoutes', to)
   if(to.name == 'Login'){
     next()
@@ -109,4 +109,4 @@ route.beforeEach(function (to, from, next) {
     }
   }
 })
-export default route
+export default router
