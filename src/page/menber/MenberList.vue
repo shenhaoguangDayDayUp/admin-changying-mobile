@@ -23,7 +23,7 @@
                     offset-sm1
                     offset-xs2
                     offset-md1
-                    offset-lg1>
+                    offset-lg1 class="btn-layout" >
                 <v-btn class='text-xs-rihgt'
                        primary @click='reset'>重置</v-btn>
                 <v-btn class='text-xs-rihgt'
@@ -59,10 +59,23 @@
 
                     </template>
                 </v-data-table> -->
-                    <k-table :tableSource='list'>
-                      <template  slot-scope="data">
-                          1{{data}}1
+                    <k-table :tableSource='list' :page.sync='page'>
+                      <template slot-scope='props'   slot='items'>
+                               <td>{{ props.item.name }}</td>
+        <td class="text-xs-right">{{ props.item.calories }}</td>
+        <td class="text-xs-right">{{ props.item.fat }}</td>
+        <td class="text-xs-right">{{ props.item.carbs }}</td>
+        <td class="text-xs-right">{{ props.item.protein }}</td>
+        <td class="text-xs-right">{{ props.item.iron }}</td>
+                                   <!-- <tr>2</tr>
+                                   <tr>3</tr>
+                                   <tr>4</tr>
+                                   <tr>5</tr>
+                                   <tr>6</tr> -->
                         </template>
+                           <!-- <template slot-scope='scope'   slot='items'>
+                                <tr>{{scope}}</tr>
+                           </template> -->
                     </k-table>
             </v-flex>
         </v-layout>
@@ -85,9 +98,10 @@
         </v-dialog>
 
         <div class="text-xs-center mt-5">
-            <v-pagination :length="4"
+          {{page}}
+            <!-- <v-pagination :length="4"
                           v-model="page"
-                          circle></v-pagination>
+                          circle></v-pagination> -->
         </div>
         <!-- </v-container> -->
     </div>
@@ -134,6 +148,7 @@ export default {
   data() {
 
     return {
+      page:1,
       list:{
           'hide-actions':true,
           headers: [
@@ -271,6 +286,12 @@ export default {
  <style lang="scss" scoped>
   .rest{
     background: red;
+  }
+  .btn-layout{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center
   }
 </style>
 
