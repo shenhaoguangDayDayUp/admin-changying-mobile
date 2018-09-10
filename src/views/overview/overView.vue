@@ -2,8 +2,8 @@
     <section>
         <!-- <div class="refresh"><font-awesome-icon :icon="icon" @click="getInfo()"></font-awesome-icon></div>   -->
         <div class="panel-group">
-            <div  v-for="(v,i) in infoArr" :key="i">
-                <!-- <el-card @click.native="v.query?pushDataQuery(v.push):pushData(v.push)">
+            <cy-card  v-for="(v,i) in infoArr" :key="i">
+                <!-- <div @click.native="v.query?pushDataQuery(v.push):pushData(v.push)"> -->
                     <div class="icon">
                         <font-awesome-icon :icon="v.icon" :style="{color: v.color}"></font-awesome-icon>
                     </div>
@@ -13,15 +13,16 @@
                             <count-to class="card-panel-num" :startVal="0" :endVal="vv" :duration="500"></count-to>
                         </div>
                     </div>
-                </el-card> -->
-            </div>
+                <!-- </div> -->
+            </cy-card>
         </div>  
     </section>
 </template>
 <script>
-import {chartApi} from '@/api/api';
-import CountTo from 'vue-count-to'
+    import {chartApi} from '@/api/api';
+    import CountTo from 'vue-count-to';
     import {common} from '@/logic';
+    import CyCard from '@/components/CyCard';
     export default {
         data() {
             return {
@@ -33,8 +34,8 @@ import CountTo from 'vue-count-to'
                 infoArr: [],
                 icon:['fa','sync-alt'], //刷新
                 defaultQuery:{
-                    start:this.$date((Date.parse(new Date())), "start"),
-                    end: this.$date((Date.parse(new Date())), "end"),
+                    // start:this.$date((Date.parse(new Date())), "start"),
+                    // end: this.$date((Date.parse(new Date())), "end"),
                 },
                 loading:false,
             }
@@ -46,19 +47,17 @@ import CountTo from 'vue-count-to'
             async getInfo() {
                 this.loading = true;
                 try {
-                const {
-                    data
-                } = await chartApi.overView({}, {
-                    headers: {
-                        'x-auth-token': common.getCommon()
-                    }
-                })
+                const {data} = await chartApi.overView({}, {headers: {'x-auth-token': common.getCommon()} })
                 setTimeout(()=>{this.loading = false;},200); 
                 this.infoArr = [];
+                console.log(11111)
                 this.dataArr = [Object.assign({},{'在线':data.memberOnline},{'注册':data.memberRegister}),Object.assign({},{'运行':data.gameActive},{'注册':data.gameRegister}),Object.assign({},{'上架':data.productActive}),Object.assign({},{'奖金池':data.totalPrizepool}),Object.assign({},{'发行费':data.balanceIssuance}),Object.assign({},{'公益金':data.balanceWelfare}),Object.assign({},{'今日充值':data.rechargeToday}),Object.assign({},{'今日下注':data.betToday}),Object.assign({},{'今日奖金':data.payoutToday})];
+                console.log(this.dataArr)
                 for(let i = 0;i < this.iconArr.length;i++){
                     this.infoArr.push(Object.assign({},{push:this.pushArr[i]},{query:this.queryArr[i]},{icon:this.iconArr[i]},{color:this.colorArr[i]},{content:this.dataArr[i]}))
                 }
+                console.log(this.infoArr);
+                
                 } catch (error) {}
             },
             pushData(name) {
@@ -69,7 +68,8 @@ import CountTo from 'vue-count-to'
             }
         },
         components: {
-            CountTo
+            CountTo,
+            CyCard
         },
     }
 </script>
@@ -94,6 +94,7 @@ import CountTo from 'vue-count-to'
         }
     .panel-group{
         margin-bottom: 20px;
+        padding:0 12px;
         .el-col {
                 padding: 30px 20px;
         }

@@ -6,17 +6,25 @@
                                  v-model='drawer'>
                 <v-list dense
                         two-line>
+                         
                      <template v-for="item in $router.options.routes">
-                       <v-list-tile v-if="item.leaf" :key="item.name" :to="item.children[0].path"> {{item.name}}</v-list-tile>
+                       <v-list-tile v-if="item.leaf" :key="item.name" :to="item.children[0].path">
+                         <font-awesome-icon :icon="item.iconCls"></font-awesome-icon>
+                          {{item.name}}
+                          </v-list-tile>
                        <v-list-group v-else
                                   v-model="item.active"
                                   v-show="!item.hidden"
                                   :key="item.name"
-                                    no-action>
+                                    >
                           <v-list-tile slot="activator">   
+                            <!-- <v-list-tile-action> -->{{item.iconCls}}
+                                 <font-awesome-icon :icon="item.iconCls"></font-awesome-icon>     
+                                  <!-- </v-list-tile-action>   -->
                               <v-list-tile-content>
                                   <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                               </v-list-tile-content>
+                              
                           </v-list-tile>
                           <template v-for="subItem in item.children">
                                   <v-list-tile 
@@ -24,15 +32,10 @@
                                       :to='subItem.path'
                                       router
                                       ripple
-                                      v-if='!subItem.children'>
-                    
+                                      v-if='!subItem.children' no-action>
                                   <v-list-tile-content>
                                       <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
-                                  </v-list-tile-content>
-                                  <v-list-tile-action>
-                                      <v-icon :icon="item.iconCls"></v-icon>
-                                      <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
-                                  </v-list-tile-action>       
+                                  </v-list-tile-content>      
                           </v-list-tile>
                           <template v-else>
                               <v-list-group  router ripple
