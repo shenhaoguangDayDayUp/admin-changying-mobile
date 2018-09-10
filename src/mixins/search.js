@@ -82,31 +82,23 @@ export var mixin = {
    
     },
     computed: {
-        end: function () {
-            var self = this;
-            return {
-                disabledDate(time) {
-                    if (self.queryParams.start) {
-                        return time.getTime() < new Date(self.queryParams.start).getTime() || time.getTime() > Date.now()
-                    } else {
-                        return time.getTime() > Date.now()
-                    }
-                }
-            };
+        startMax(){
+            if(this.queryParams.end){
+              return  this.$dateFilter(new Date(this.queryParams.end)) 
+            }else{
+                return this.$dateFilter(new Date())  
+            }
+          
         },
-        start: function () {
-            var self = this;
-            return {
-                disabledDate(time) {
-                    if (self.queryParams.end) {
-                        return time.getTime() > new Date(self.queryParams.end).getTime() || time.getTime() > Date.now();
-                    } else {
-                        return time.getTime() > Date.now()
-                    }
-                }
-            };
+        startMin(){
+             if(this.queryParams.start){
+              return  this.$dateFilter(new Date(this.queryParams.start)) 
+            }else{
+                return this.$dateFilter(new Date())  
+            }
         }
-    },
+     
+      },
     methods: {
         handleCurrentChange(val) {
             

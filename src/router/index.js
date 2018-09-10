@@ -92,7 +92,7 @@ const router =new Router({
         {path:'/bonusPool',menuShow:true,component: ()=>import('../page/founding/BounsPool'), name:'奖金池',parentId:3,id:35,active:false},
         {path:'/bonusDetail/:id',menuShow:true,component: ()=>import('../page/founding/BounsPoolDetail'), name:'奖金池详情',parentId:3,id:36,active:false},
         {path:'/issuse',menuShow:true,component: ()=>import('../page/founding/IssusCost'), name:'发行费',parentId:3,id:37,active:false},
-        {path:'/issuse',menuShow:true,component: ()=>import('../page/founding/Walfare'), name:'公益金',parentId:3,id:38,active:false},
+        {path:'/walfare',menuShow:true,component: ()=>import('../page/founding/Walfare'), name:'公益金',parentId:3,id:38,active:false},
         
         
         

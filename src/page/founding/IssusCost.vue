@@ -27,7 +27,7 @@
      
           readonly
         ></v-text-field>
-        <v-date-picker  locale='zh-Hans' v-model="queryParams.start" no-title scrollable >
+        <v-date-picker :max='startMax'  locale='zh-Hans' v-model="queryParams.start" no-title scrollable >
           <v-spacer></v-spacer>
           <v-btn flat color="primary" @click="menu = false">取消</v-btn>
           <v-btn flat color="primary" @click="$refs.start.save(queryParams.start)">确定</v-btn>
@@ -58,7 +58,7 @@
           label="结束时间"
           readonly
         ></v-text-field>
-        <v-date-picker   locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
+        <v-date-picker :min='startMin'   locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
           <v-spacer></v-spacer>
 
           <v-btn flat color="primary" @click="menus = false">取消</v-btn>
@@ -129,17 +129,6 @@ import { game } from "@/mixins/game";
 export default {
   mixins: [mixin,game],
   name: "vip",
- 
-  computed: {
-    max(){
-        if(this.queryParams.end){
-          return  this.$dateFilter(new Date(this.queryParams.end)) 
-        }else{
-           return this.$dateFilter(new Date()) 
-        }
-    },
- 
-  },
   methods: {
       async getTotal(params,token) {
       const {start,end} = params
