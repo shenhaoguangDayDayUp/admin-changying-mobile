@@ -94,13 +94,13 @@
         }
     .panel-group{
         margin-bottom: 20px;
-        padding:0 12px;
+        padding:0 24px;
         .el-col {
                 padding: 30px 20px;
         }
         .icon{
             width:50px;
-            height:100%;
+            // height:100%;
             // border:1px solid #d1dbe5;
             display: flex;
             justify-content: center;

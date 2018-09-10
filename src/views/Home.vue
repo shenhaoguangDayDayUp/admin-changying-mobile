@@ -18,9 +18,9 @@
                                   :key="item.name"
                                     >
                           <v-list-tile slot="activator">   
-                            <!-- <v-list-tile-action> -->{{item.iconCls}}
-                                 <font-awesome-icon :icon="item.iconCls"></font-awesome-icon>     
-                                  <!-- </v-list-tile-action>   -->
+                            <!-- <v-list-tile-action>{{item.iconCls}}
+                                 <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> 
+                                  </v-list-tile-action>   -->
                               <v-list-tile-content>
                                   <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                               </v-list-tile-content>

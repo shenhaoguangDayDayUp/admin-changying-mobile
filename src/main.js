@@ -36,7 +36,7 @@ Vue.use(Vuetify,{
 Vue.config.productionTip = false
 import  './components/index'
 /* eslint-disable no-new */
-new Vue({
+window.global = new Vue({
   el: '#app',
   router,
   store,
