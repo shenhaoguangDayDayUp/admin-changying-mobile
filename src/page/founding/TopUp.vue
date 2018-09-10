@@ -1,22 +1,72 @@
 <template>
     <div class="vip" >
+        <!-- {{queryParams.start}} -->
         <!-- <v-container fluid> -->
         <v-layout wrap>
             <v-flex xs12
                     sm5
                     md3>
-                <v-text-field v-model='form.name'
-                              label="姓名"></v-text-field>
+      <v-menu
+        ref="start"
+        :close-on-content-click="false"
+        v-model="menu"
+        :nudge-right="40"
+        :return-value.sync="queryParams.start"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          v-model="queryParams.start"
+          label="开始时间"
+     
+          readonly
+        ></v-text-field>
+        <v-date-picker  locale='zh-Hans' v-model="queryParams.start" no-title scrollable >
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="menu = false">取消</v-btn>
+          <v-btn flat color="primary" @click="$refs.start.save(queryParams.start)">确定</v-btn>
+        </v-date-picker>
+      </v-menu>
+    </v-flex>
+
             </v-flex>
-            <v-flex xs12
+
+              <v-flex xs12
                     sm5
-                    md3
-                    offset-sm1
-                    offset-md1
-                    offset-lg1>
-                <v-text-field v-model='form.mobileNumber'
-                              label="手机号"></v-text-field>
-            </v-flex>
+                    md3>
+      <v-menu
+        ref="end"
+        :close-on-content-click="false"
+        v-model="menus"
+        :nudge-right="40"
+        :return-value.sync="queryParams.end"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          v-model="queryParams.end"
+          label="结束时间"
+          readonly
+        ></v-text-field>
+        <v-date-picker   locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="menus = false">取消</v-btn>
+          <v-btn flat color="primary" @click="$refs.end.save(queryParams.end)">确定</v-btn>
+        </v-date-picker>
+      </v-menu>
+    </v-flex>
+
+
+
+        
             <v-flex xs12
                     sm5
                     md3
@@ -59,7 +109,7 @@
 
                     </template>
                 </v-data-table> -->
-                    <k-table :tableSource='list' :page.sync='page'>
+                    <k-table @pageChage='handleCurrentChange' :tableSource='list' :page.sync='page'>
                       <template slot-scope='props'   slot='items'>
                                <td>{{ props.item.name }}</td>
         <td class="text-xs-right">{{ props.item.calories }}</td>
@@ -79,7 +129,24 @@
                     </k-table>
             </v-flex>
         </v-layout>
-    
+        <v-dialog v-model="dialog"
+                  max-width="290">
+            <v-card>
+                <v-card-title class="headline">是否移贵宾?</v-card-title>
+                <v-card-text class="text-xs-left">手机:{{detail.mobileNumber}}</v-card-text>
+                <v-card-text class="text-xs-left">姓名:{{detail.name}}</v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="red darken-1"
+                           flat="flat"
+                           @click.native="dialog = false">取消</v-btn>
+                    <v-btn color="green darken-1"
+                           flat="flat"
+                           @click='certain'>确定</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
         <div class="text-xs-center mt-5">
           {{page}}
             <!-- <v-pagination :length="4"
@@ -92,25 +159,68 @@
 <script>
 import { memberApi } from "@/api";
 import { common } from "@/logic";
+import { mixin } from "@/minxis/search";
 export default {
+  mixins: [mixin],
   name: "vip",
-
+  mounted() {
+    this.getList();
+      this.$vuetify.lang.current = 'zhHans'
+  
+  },
+  computed: {
+    max(){
+        if(this.queryParams.end){
+          return  this.$dateFilter(new Date(this.queryParams.end)) 
+        }else{
+           return this.$dateFilter(new Date()) 
+        }
+       
+    },
+ 
+  },
   methods: {
-  
-  
    
-    
-    async getList(  params = Object.assign({}, this.tableParams, this.queryParams)) {
+      reset(){
+        this.form.name = ''
+         this.form.mobileNumber = ''
+      },
+    async search() {
+     var token = {
+        headers: { "x-auth-token": common.getCommon("TOKEN") }
+      }; 
+     await  memberApi.entity({id:this.form.mobileNumber},token)
+    },
+    async certain() {
       var token = {
         headers: { "x-auth-token": common.getCommon("TOKEN") }
       };
- const { data } = await rechargesApi.query(params, token);
-       this.items = data;
+      await memberApi.vipRemove({ id: this.detail.mobileNumber }, token);
+      this.dialog = false;
+      this.getList();
+    },
+    gotoRemove(data) {
+      this.detail = data;
+      this.dialog = true;
+    },
+    async getList() {
+      var token = {
+        headers: { "x-auth-token": common.getCommon("TOKEN") }
+      };
+      const { data } = await memberApi.memberList({ id: 0 }, token);
+      this.items = data;
     }
   },
   data() {
 
     return {
+      queryParams:{
+          start:'',
+          end:''
+      },
+      menus:false,
+      menu:false,
+      date:'2018-03-02',
       page:1,
       list:{
           'hide-actions':true,
