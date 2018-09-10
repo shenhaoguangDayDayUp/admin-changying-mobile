@@ -88,9 +88,8 @@
                     <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
                       <template slot-scope='props'   slot='items'>
                           <tr @click='gotoRow(props)'>
-                                               <td  style='width:300px'>{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
-        <td class="text-xs-center" style='width:300px'>{{ props.item.method|payMethod }}</td>
-        <td style='color:blue' @click.stop='gotoItem(props.item.receiver.code )' class="text-xs-center">{{ props.item.receiver.code }}</td>
+                                  <td  style='width:300px'>{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
+        <td style='color:blue' @click.stop='gotoItem(props.item.sender.code )' class="text-xs-center">{{ props.item.sender.code }}</td>
         <td class="text-xs-right">{{ props.item.amount|currency }}</td>
                           </tr>
        
@@ -110,7 +109,7 @@
     </div>
 </template>
 <script>
-import { rechargesApi, rechargesTotalApi } from "@/api/api";
+import { redeemApi, redeemTotalApi } from "@/api/api";
 import { common } from "@/logic";
 import { mixin } from "@/minxis/search";
 export default {
@@ -131,7 +130,7 @@ export default {
       async getTotal(params,token) {
       const {start,end} = params
       const query = Object.assign({},{start:start,end:end})
-      const { data } = await rechargesTotalApi.query(
+      const { data } = await redeemTotalApi.query(
         query,
         token
       );
@@ -154,7 +153,7 @@ export default {
       if(params.end){
           params.end = this.$date(params.end, "end")
       }
-   const { data } = await rechargesApi.query(params, token);
+   const { data } = await redeemApi.query(params, token);
    this.pageCofig.length = Math.ceil(data.count/12) 
    this.list.items = data.records
    this.getTotal(params,token);
@@ -186,9 +185,8 @@ export default {
           sortable: false,
           value: 'updateAt'
         },
-        { text: '方式', value: 'method',  sortable: false, align: 'center', },
         { text: '手机号', value: 'receiver',  sortable: false,  align: 'center', },
-          { text: '金额', value: 'amount',  sortable: false,   align: 'center', },
+          { text: '积分', value: 'amount',  sortable: false,   align: 'center', },
   
       ],
      items:[

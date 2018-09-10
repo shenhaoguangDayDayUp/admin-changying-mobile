@@ -67,6 +67,13 @@ export function mbrStatus (value) {
       return "-";
   }
 }
+export function payMethod (value) {
+    return {
+        ALIPAY_PAGE: "支付宝网页",
+        ALIPAY_F2F: "支付宝扫码",
+        WEIXIN_NATIVE: "微信扫码"
+      }[value];
+  }
 // 提交状态
 export function submitStatus (value) {
   switch(value)
@@ -115,6 +122,10 @@ export function paymentMethod (value) {
       return "-";
   }
 }
+Vue.filter('payMethod', (val) => {
+    return payMethod(val)
+  });
+
 
 Vue.filter('currency', (value, currency = '￥', decimals = 2) => {
     if(value){
@@ -235,3 +246,13 @@ Vue.prototype.$amountTypeFilter = Vue.filter('amount'); // 积分正负号
 Vue.prototype.$orderStatus = Vue.filter('orderStatus');
 Vue.prototype.$date = Vue.filter('date')
 Vue.prototype.$productStatus = Vue.filter('productStatus')
+Object.rmEmpty = obj => { // 挂载到原生Object对象上
+    let params = Object.assign({}, obj)
+    for (let key in params) { 
+      if (!params[key]) { //去除键为空的对象
+        delete params[key]
+      }
+    }
+    return params
+  }
+  

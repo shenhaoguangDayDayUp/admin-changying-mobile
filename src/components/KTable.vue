@@ -62,7 +62,7 @@ export default {
                 on:{
                     'input':(value)=>{
                       this.index = value
-                      this.$emit('pageChage',index)
+                      this.$emit('pageChage',this.index)
                     },
                 }
             },)

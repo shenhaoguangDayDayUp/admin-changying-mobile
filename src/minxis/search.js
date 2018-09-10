@@ -15,6 +15,7 @@ export function searchOrReset(tableParams, queryParams, type) {
     Object.assign(tableParams, { index: 1 });
     let _params = Object.assign({}, queryParams, tableParams);
     _params = Object.rmEmpty(_params)
+     
     // _.forEach(_params, (v, k) => {  //去除空的参数
     //     if (!v) {
     //         delete _params[k];
@@ -39,7 +40,6 @@ export var mixin = {
                        this.queryParams[key] = timestamp3
                     console.log(this.queryParams[key])
                 } else {
-                    
                     this.queryParams[key] = Number(this.$route.query[key])
                 }
 
@@ -49,6 +49,7 @@ export var mixin = {
         } else {
             this.getList(this.tableParams);
         }
+        this.page = Number(this.$route.query.index)
    
     },
     data() {
@@ -108,13 +109,13 @@ export var mixin = {
     },
     methods: {
         handleCurrentChange(val) {
-            console.log(val)
-            this.tableParams.index = val
+            
+            this.tableParams.index = this.page
 
         //    var date1 = this.$date(this.queryParams.start, "start")
         //    var date2 = this.$date(this.queryParams.end, "end")
-        date1 = this.$dateFilter(this.queryParams.start,'yyyy-MM-dd')
-        date2 = this.$dateFilter(this.queryParams.end,'yyyy-MM-dd')
+      var  date1 = this.$dateFilter(this.queryParams.start,'yyyy-MM-dd')
+      var  date2 = this.$dateFilter(this.queryParams.end,'yyyy-MM-dd')
             let _params = Object.assign({}, this.queryParams, this.tableParams, { start: date1, end: date2 });
 
             _params = Object.rmEmpty(_params)
@@ -140,8 +141,8 @@ export var mixin = {
             this.tableParams = tableParams;
 
 
-            date1 = this.$dateFilter(_params.start,'yyyy-MM-dd')
-            date2 = this.$dateFilter(_params.end,'yyyy-MM-dd')
+          var  date1 = this.$dateFilter(_params.start,'yyyy-MM-dd')
+          var  date2 = this.$dateFilter(_params.end,'yyyy-MM-dd')
 
             var query = Object.assign({}, _params, { start: date1, end: date2, index: this.tableParams.index })
 
