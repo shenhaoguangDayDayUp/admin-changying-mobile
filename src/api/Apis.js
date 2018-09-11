@@ -21,6 +21,7 @@ axios.interceptors.request.use(function (config) {
     //         window.global.$root.eventHub.$emit('LodingHide')  
     //     }
     //    })
+    window.global.$$Loading.present.show()
        
      
     return config;
@@ -30,6 +31,7 @@ axios.interceptors.request.use(function (config) {
 });
 axios.interceptors.response.use(function (response) {
     // window.global.$vux.loading.hide();
+    window.global.$$Loading.present.hide()
 
  return response;
 }, function (error) {
@@ -50,6 +52,7 @@ axios.interceptors.response.use(function (response) {
             break;
     }
     // window.global.$vux.loading.hide();
+    window.global.$$Loading.present.hide()
     document.body.style.overflow = 'auto';
     return Promise.reject(error);
 }); 

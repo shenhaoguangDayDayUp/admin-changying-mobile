@@ -109,11 +109,12 @@
                    <v-layout row wrap>
                       <v-flex   xs12>
                           <v-breadcrumbs class="px-0" divider="/">
-                            <v-breadcrumbs-item
+                            <v-breadcrumbs-item @click.native='gotoBread(item)' 
                               v-for="item in breadcrumbs"
                               :key="item.text"
                               :disabled="item.disabled"
-                            >
+                        
+                             >
                             {{ item.text }}
                           </v-breadcrumbs-item>
                         </v-breadcrumbs>
@@ -141,6 +142,12 @@ export default {
     ...mapGetters(["routes"])
   },
   methods: {
+    gotoBread(item){
+      if(!item.disabled){
+      this.$router.push({name:item.text})
+      }
+
+    },
     async exit() {
       var token = {
         headers: { "x-auth-token": common.getCommon("TOKEN") }

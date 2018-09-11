@@ -35,6 +35,8 @@ Vue.use(Vuetify,{
 
 Vue.config.productionTip = false
 import  './components/index'
+import { plugin} from './components/index'
+Vue.use(plugin.install);
 /* eslint-disable no-new */
 window.global = new Vue({
   el: '#app',

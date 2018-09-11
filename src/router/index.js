@@ -82,6 +82,7 @@ const router =new Router({
       active:false, 
       id:3,
       name: '资金中心',
+      redirect:'/topup',
       iconCls: ['fa' ,'credit-card'],
       children:[
         {path:'/topup',menuShow:true,component: ()=>import('../page/founding/TopUp.vue'), name:'充值',parentId:3,id:30,active:false},
