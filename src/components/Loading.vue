@@ -7,6 +7,7 @@
         transition="none"
          fullscreen
     >
+    
       <div class="back-loading" > 
           <!-- <div class="back-loading-content"> -->
           <v-progress-circular
