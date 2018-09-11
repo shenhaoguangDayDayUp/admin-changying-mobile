@@ -203,11 +203,6 @@ export default {
   .rest{
     background: red;
   }
-  .btn-layout{
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-end;
-    align-items:center
-  }
+  
 </style>
 

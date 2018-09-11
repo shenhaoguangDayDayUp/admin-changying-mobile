@@ -21,6 +21,7 @@ export var game = {
             }
           };
       var {data} =  await   gameListDropdownApi.query({},token)
+                
               this.gameList = data
               this.gameList.unshift({code:0,name:'全部'});
         }

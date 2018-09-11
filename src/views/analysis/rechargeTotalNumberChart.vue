@@ -1,22 +1,11 @@
 <template>
     <div>
-        <!-- <div class="chart-title">
-            <el-form inline >
-                <el-form-item label="时间">
-                    <el-select v-model="value" :placeholder="placeholderTime">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </el-form-item>    
-                <el-form-item>
-                <el-button type="primary" @click='search'>搜索</el-button>
-                    <el-button @click='reset'>重置</el-button>
-                </el-form-item> 
-                <el-form-item>
-                </el-form-item>
-            </el-form>
-            <div><font-awesome-icon :icon="icon" @click="search()"></font-awesome-icon></div>
-        </div> -->
-        <div id="chartLine" style="width:100%; height:800px;"  @click="goto('/topup')"></div>
+        <v-select :items="options" label="时间" menu-props="auto" v-model="value"></v-select>
+        <v-flex xs12 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
+                <v-btn class='text-xs-right' primary @click='reset'>重置</v-btn>
+                <v-btn class='text-xs-right' color="info" @click='search'>搜索</v-btn>
+        </v-flex>
+        <div id="chartLine" style="width:100%; height:700px;"  @click="goto('/topup')"></div>
     </div>
 </template>
 <script>
@@ -29,7 +18,7 @@
         mixins: [chartMixin,game], // 混入
         data(){
            return {
-                icon:['fa','sync-alt'], //刷新
+                icon:['fa','sync-alt'], //刷新,
             }
         },
         async mounted() {
