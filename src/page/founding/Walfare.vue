@@ -35,7 +35,7 @@
       </v-menu>
     </v-flex>
 
-            </v-flex>
+   
 
               <v-flex xs12
                     sm5
@@ -100,8 +100,8 @@
                     <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
                       <template slot-scope='props'   slot='items'>
                           <tr @click='gotoRow(props)'>
-                               <td  style='width:300px'>{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
-                   <td class="text-xs-center">{{ props.item.application }}</td>
+                               <td class="px-0">{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
+                   <td class="text-xs-center px-0">{{ props.item.application }}</td>
         <td style='color:blue' @click.stop='gotoItem(props.item.sender.code )' class="text-xs-center">{{ props.item.sender.code }}</td>
         <td class="text-xs-right">{{ props.item.amount|currency }}</td>
                           </tr>

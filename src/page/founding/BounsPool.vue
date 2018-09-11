@@ -29,8 +29,8 @@
                       <template slot-scope='props'   slot='items'>
                         
                           <tr @click='gotoRow(props)'>
-                                <td class="text-xs-right">{{ props.item.code }}</td>
-                             <td  style='width:300px;color:blue'>{{ props.item.owner.name}}</td>
+                                <td class="text-xs-center">{{ props.item.code }}</td>
+                             <td  class="text-xs-center px-0" style='width:300px;color:blue'>{{ props.item.owner.name}}</td>
         <td class="text-xs-right">{{ props.item.balance|currency }}</td>
                           </tr>
        
