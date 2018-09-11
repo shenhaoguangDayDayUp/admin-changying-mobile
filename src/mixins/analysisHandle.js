@@ -10,25 +10,25 @@ export var chartMixin = {
                 yAxisReverse:[],
             options: [{
                 value: '6',
-                label: '6小时'
+                text: '6小时'
                 }, {
                 value: '12',
-                label: '12小时'
+                text: '12小时'
                 }, {
                 value: '24',
-                label: '1天'
+                text: '1天'
                 }, {
                 value: '168',
-                label: '7天'
+                text: '7天'
                 }, {
                 value: '360',
-                label: '15天'
+                text: '15天'
                 }, {
                 value: '720',
-                label: '30天'
+                text: '30天'
                 }],
-            value: '', // select初始值
-            application:'',  // select初始值
+            value: '', // 日期select初始值
+            application:'',  // 游戏select初始值
             requestID:6,
             autoResize:true,
             placeholderTime:'默认 6小时内'

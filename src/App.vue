@@ -39,4 +39,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.btn-layout{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center
+  }
 </style>

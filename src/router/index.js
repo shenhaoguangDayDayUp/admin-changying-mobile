@@ -32,7 +32,6 @@ const router =new Router({
         children:[
             {menuShow:false,name:'总览',path: '/overView',component: ()=>import('../views/overview/overView.vue')}
         ]
-        
     },
     {
         path: '/',

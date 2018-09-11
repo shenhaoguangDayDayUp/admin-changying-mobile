@@ -190,8 +190,10 @@ export default {
              var list =[]
         this.$nextTick(res=>{
            this.findActive(this.$route.name,this.$router.options.routes,(res)=>{
-               let dad = res.parentId; 
-               this.findParent(dad,this.$router.options.routes,(arr)=>{
+            if(res.leaf){ //总览
+              this.breadcrumbs = [{text:res.name,disabled:false}]
+            }else{
+                this.findParent(res.parentId,this.$router.options.routes,(arr)=>{
                // 面包屑
                 this.breadList = [...arr,res];// 合并数组
                 this.breadList =  this.breadList.sort(function(item1,item2){
@@ -199,6 +201,9 @@ export default {
                       return 1
                     }
                   })
+                  
+                  console.log(this.breadList);
+                  
                 this.breadcrumbs = this.breadList.map((res,index)=>{
                     if(this.breadList.length -1 !=index){
                         return {text:res.name,disabled:false}
@@ -207,18 +212,16 @@ export default {
                     }
                    
                 })
+                console.log(this.breadcrumbs)
+                },list)
+            }
                 this.$vuetify.goTo('#app', {duration: 300,offset:-100,easing: 'easeInOutCubic'})
    
                
-             },list)
 
-       })
+            })
 
         })
-        //  console.log(val)
-        // if(val.path){
-        //     this.
-        // }
       },
       immediate: true,
       deep: true
