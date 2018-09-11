@@ -23,6 +23,12 @@ export default {
  
     }
   },
+  data(){
+    return{
+      select:['Foo', 'Bar', 'Fizz', 'Buzz']
+    }
+
+  },
   computed: {
       index:{
           get(){
@@ -36,7 +42,7 @@ export default {
   },
   render(h) {
     const self = this
-
+    console.log(11111)
     return h(
       "div",
       {
@@ -65,7 +71,16 @@ export default {
                       this.$emit('pageChage',this.index)
                     },
                 }
-            },)
+            },),
+                h('div',{
+                props:{},
+                on:{
+                  
+                },
+                domProps:{
+                  innerHTML:`共${this.pageCofig.length}页`
+                }
+            },[])
         ])
     },
     renderTable(h) {
@@ -76,7 +91,6 @@ export default {
         return vnode
       })
     const self = this
-        console.log(this.$scopedSlots)
       return h(
         "v-data-table",
         {
