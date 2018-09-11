@@ -50,7 +50,7 @@ export default {
           "k-table": true
         }
       },
-      [this.renderTable(h),this.renderPage(h)]
+      [this.renderTable(h), this.pageCofig.length? this.renderPage(h):'']
     );
   },
   methods: {

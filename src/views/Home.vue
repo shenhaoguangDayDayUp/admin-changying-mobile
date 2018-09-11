@@ -200,10 +200,7 @@ export default {
                     if(item1.id>item2.id){
                       return 1
                     }
-                  })
-                  
-                  console.log(this.breadList);
-                  
+                  })              
                 this.breadcrumbs = this.breadList.map((res,index)=>{
                     if(this.breadList.length -1 !=index){
                         return {text:res.name,disabled:false}
@@ -211,8 +208,7 @@ export default {
                         return {text:res.name,disabled:true}
                     }
                    
-                })
-                console.log(this.breadcrumbs)
+                }).filter(item=>item.text)
                 },list)
             }
                 this.$vuetify.goTo('#app', {duration: 300,offset:-100,easing: 'easeInOutCubic'})
