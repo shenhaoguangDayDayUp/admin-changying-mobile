@@ -45,4 +45,26 @@ export default {
     justify-content:flex-end;
     align-items:center
   }
+  .v-tabs__item{
+    color: #1976d2;
+  }
+  .v-tabs__item:not(.v-tabs__item--active){
+    color: #2c3e50;
+  }
+  .v-tabs__container{
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+  }
+  .Rank .theme--light.v-text-field .v-input__slot:before{
+        border-color: rgba(0,0,0,0.12);
+  }
+  .Rank .v-label{
+    font-size: 13px;
+    padding-left:12px;
+  }
+  .Rank .v-input{
+    font-size: 13px;
+  }
+  .Rank .v-select__selection--comma{
+    margin-left:8px;
+  }
 </style>

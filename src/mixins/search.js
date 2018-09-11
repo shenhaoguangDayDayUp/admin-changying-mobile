@@ -101,7 +101,6 @@ export var mixin = {
       },
     methods: {
         handleCurrentChange(val) {
-            
             this.tableParams.index = this.page
 
         //    var date1 = this.$date(this.queryParams.start, "start")

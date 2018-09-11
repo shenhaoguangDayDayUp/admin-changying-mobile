@@ -1,4 +1,14 @@
 <template>
+    <v-tabs v-model="active" color="transparent" dark slider-color="#1976d2">
+        <v-tab ripple> 会员收奖</v-tab>
+        <v-tab ripple> 游戏奖金</v-tab>
+        <v-tab-item >
+           <Rank  @getList='list' :tableData='tableData' :headers="headers"></Rank>
+        </v-tab-item>
+        <v-tab-item >
+            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" ></Rank>
+        </v-tab-item>
+    </v-tabs>
     <!-- <el-tabs  class="prizeRank" v-model="activeName">
             <el-tab-pane label="会员收奖" name="mbrPrize" v-loading="loading">
                  <keep-alive><Rank v-if="activeName=='mbrPrize'" @getList='list' :tableData='tableData' labelY="收奖" tabActive="prizeDetail"></Rank></keep-alive>
@@ -20,7 +30,15 @@ import {chartApi} from '@/api/api';
              tableData1:[],
              active:false,
              loading:false,
-             loading1:false
+             loading1:false,
+             headers: [
+                { text: '手机号', align: 'center',sortable: false,},
+                { text: '收奖', align: 'center', sortable: false},
+            ],
+             headers1: [
+                { text: '游戏', align: 'center',sortable: false,},
+                { text: '积分', align: 'center', sortable: false},
+            ],
          }
      },
      methods:{

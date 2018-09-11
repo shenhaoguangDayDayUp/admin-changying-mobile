@@ -35,7 +35,7 @@
       </v-menu>
     </v-flex>
 
-
+            </v-flex>
 
               <v-flex xs12
                     sm5
@@ -88,8 +88,8 @@
                     <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
                       <template slot-scope='props'   slot='items'>
                           <tr @click='gotoRow(props)'>
-                                               <td  class="px-0">{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
-        <td class="text-xs-center px-0"> {{ props.item.method|payMethod }}</td>
+                                               <td  style='width:300px'>{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
+        <td class="text-xs-center" style='width:300px'>{{ props.item.method|payMethod }}</td>
         <td style='color:blue' @click.stop='gotoItem(props.item.receiver.code )' class="text-xs-center">{{ props.item.receiver.code }}</td>
         <td class="text-xs-right">{{ props.item.amount|currency }}</td>
                           </tr>
@@ -157,6 +157,8 @@ export default {
    const { data } = await rechargesApi.query(params, token);
    this.pageCofig.length = Math.ceil(data.count/12) 
    this.list.items = data.records
+   console.log(9999)
+   console.log(this.list)
    this.getTotal(params,token);
     //   this.items = data;
     }
@@ -203,6 +205,6 @@ export default {
   .rest{
     background: red;
   }
-  
+
 </style>
 

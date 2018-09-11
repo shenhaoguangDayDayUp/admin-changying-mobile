@@ -48,6 +48,7 @@ const router =new Router({
             {active:false,  path: '/prizeTotalNumberChart', menuShow:true,component: ()=>import('../views/analysis/prizeTotalNumberChart.vue'), name: '奖金情况',parentId:7 ,id:73},
             {active:false,  path: '/prizeRanking', menuShow:true,component: ()=>import('../views/analysis/prizeRanking.vue'), name: '奖金排行榜',parentId:7 ,id:75},        
             {active:false,  path: '/exchangeTotalNumberChart', menuShow:true,component: ()=>import('../views/analysis/exchangeNumberChart.vue'), name: '兑换情况',parentId:7 ,id:76},     
+            {active:false,  path: '/exchangeRanking', menuShow:true,component: ()=>import('../views/analysis/exchangeRanking.vue'), name: '兑换排行榜',parentId:7 ,id:77},        
         ]
     },
     {
