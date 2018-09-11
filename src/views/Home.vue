@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app>
+        <v-app id='app'>
             <v-navigation-drawer app
                                  enable-resize-watcher
                                  v-model='drawer'>
@@ -46,7 +46,7 @@
                                           <v-icon>border_color</v-icon>
                                       </v-list-tile-action>
                                       <v-list-tile-content>
-                                          <v-list-tile-title>{{subItem.name}}11111</v-list-tile-title>
+                                          <v-list-tile-title>{{subItem.name}}</v-list-tile-title>
                                       </v-list-tile-content>
                                   </v-list-tile>
                                   <!-- <v-list-tile class="px-5" v-for="subMenu in subItem.children"
@@ -208,6 +208,8 @@ export default {
                 console.log(this.breadcrumbs)
                 },list)
             }
+                this.$vuetify.goTo('#app', {duration: 300,offset:-100,easing: 'easeInOutCubic'})
+   
                
 
             })
