@@ -1,22 +1,20 @@
 <template>
     <div class="Rank">
-        <!-- <el-select v-model="value" placeholder="6小时" @change="selectChange(value)">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-            </el-option>
-        </el-select> -->
-        <!-- <font-awesome-icon :icon="icon" @click="getList()"></font-awesome-icon> -->
-        <!-- <el-table :data="tableData" style="width: 100%"  @row-click="rowClick" > -->
-         <!-- <el-table :data="tableData" style="width: 100%"  @row-click="rowClick" :class="{mytable:isActive}">
-            <el-table-column prop="x" :label="labelX">
-            </el-table-column>
-            <el-table-column prop="y" :label="labelY">
-            </el-table-column>
-        </el-table> -->
-        <v-select :items="options" label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)"></v-select>
-        <v-data-table :headers="headers" :items="tableData" hide-actions class="elevation-1" >
-            <template slot="items" slot-scope="props">
+        <v-select v-show="selectShow" :items="options" label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)"></v-select>
+         <!--数据分析模块排行表-->
+        <v-data-table :headers="headers" :items="tableData" hide-actions class="elevation-1" v-if="rankTable">
+            <template slot="items" slot-scope="props" > 
                 <td>{{ props.item.x }}</td>
                 <td>{{ props.item.y }}</td>
+            </template>
+        </v-data-table>
+        <!--用户收货地址表-->
+        <v-data-table :headers="headers" :items="tableData" hide-actions  :expand="true" class="elevation-1" v-else >
+            <template slot="items" slot-scope="props">
+                <td>{{ props.item.isfavorite }}</td>
+                <td>{{ props.item.name }}</td>
+                <td>{{ props.item.mobileNumber }}</td>
+                <td>{{ props.item.address}}</td>
             </template>
         </v-data-table>
     </div>
@@ -49,6 +47,14 @@ export default {
         },
         tabActive:{
             type:String,
+        },
+        selectShow:{
+            type:Boolean,
+            default:true
+        },
+        rankTable:{
+            type:Boolean,
+            default:true
         }
     },
     mounted(){

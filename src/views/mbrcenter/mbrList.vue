@@ -1,17 +1,8 @@
 <template>
-		<!-- <el-table :data="users" highlight-current-row v-loading="listLoading" style="width: 100%;" @row-click="rowClick">
-			<el-table-column prop="mobileNumber" label="手机号"></el-table-column>
-			<el-table-column prop="name" label="姓名"></el-table-column>
-			<el-table-column prop="status" label="状态"></el-table-column>
-		</el-table>
-		<el-col :span="24" class="toolbar">
-			<el-pagination layout="total, prev, pager, next, jumper" @current-change="handleCurrentChange" :current-page="page" :page-size="12" :total="total" style="float:right;">
-			</el-pagination>
-		</el-col> -->
     <v-layout row>
         <v-flex xs12>
             <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
-                <template slot-scope='props'   slot='items'>
+                <template slot-scope='props' slot='items'>
                     <tr @click='rowClick(props)'>
                         <td class="px-0">{{ props.item.mobileNumber}}</td>
                         <td> {{ props.item.name}}</td>
@@ -92,8 +83,8 @@
 			//进入用户详情
 			rowClick(prop) {
 				this.$router.push({
-					path: "/mbrDetail",
-					query: {
+					name:'会员详情',
+					params: {
 						code: prop.item.mobileNumber
 					}
 				})

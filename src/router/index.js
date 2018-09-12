@@ -61,7 +61,7 @@ const router =new Router({
         // redirect: '/vipList', 
         children: [
             { active:false, path: '/mbrList',menuShow:true, component: ()=>import('../views/mbrcenter/mbrList.vue'), name: '会员名单',parentId:1,id:11 },
-            {active:false,  path: '/mbrDetail', menuShow:false,component: ()=>import('../views/mbrcenter/mbrDetail.vue'), name: '会员详情',parentId:11 ,id:16,parentId1:10,parentId2:13},// 会员、贵宾、黑名单共用一个会员详情
+            {active:false,  path: '/mbrDetail/:code', menuShow:false,component: ()=>import('../views/mbrcenter/mbrDetail.vue'), name: '会员详情',parentId:11 ,id:16,parentId1:10,parentId2:13},// 会员、贵宾、黑名单共用一个会员详情
         ]
     },
     {
@@ -72,8 +72,8 @@ const router =new Router({
         id:2,
         iconCls: ['fa' ,'gamepad'],
         children: [
-            { active:false, path: '/gameList',menuShow:true, component: ()=>import('../views/gameCenter/gameList.vue'), name: '游戏清单',parentId:2,id:20},
-            {active:false,  path: '/gameDetail',menuShow:false, component: ()=>import('../views/gameCenter/gameDetail.vue'), name: '游戏详情',parentId:20,id:21},
+            {active:false, path: '/gameList',menuShow:true, component: ()=>import('../views/gameCenter/gameList'), name: '游戏清单',parentId:2,id:20},
+            {active:false,  path: '/gameDetail/:code',menuShow:false, component: ()=>import('../views/gameCenter/gameDetail'), name: '游戏详情',parentId:20,id:21},
         ]
     },
     {
@@ -93,10 +93,7 @@ const router =new Router({
         {path:'/bonusPool',menuShow:true,component: ()=>import('../page/founding/BounsPool'), name:'奖金池',parentId:3,id:35,active:false},
         {path:'/bonusDetail/:id',menuShow:false,component: ()=>import('../page/founding/BounsPoolDetail'), name:'奖金池详情',parentId:35,id:36,active:false},
         {path:'/issuse',menuShow:true,component: ()=>import('../page/founding/IssusCost'), name:'发行费',parentId:3,id:37,active:false},
-        {path:'/walfare',menuShow:true,component: ()=>import('../page/founding/Walfare'), name:'公益金',parentId:3,id:38,active:false},
-        
-        
-        
+        {path:'/walfare',menuShow:true,component: ()=>import('../page/founding/Walfare'), name:'公益金',parentId:3,id:38,active:false},        
       ]
 
   },

@@ -6,17 +6,9 @@
            <Rank  @getList='list' :tableData='tableData' :headers="headers"></Rank>
         </v-tab-item>
         <v-tab-item >
-            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" ></Rank>
+            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" :rankTable="false"></Rank>
         </v-tab-item>
     </v-tabs>
-    <!-- <el-tabs  class="prizeRank" v-model="activeName">
-            <el-tab-pane label="会员收奖" name="mbrPrize" v-loading="loading">
-                 <keep-alive><Rank v-if="activeName=='mbrPrize'" @getList='list' :tableData='tableData' labelY="收奖" tabActive="prizeDetail"></Rank></keep-alive>
-            </el-tab-pane>
-            <el-tab-pane label="游戏奖金" name="gamePrize" v-loading="loading1">
-                 <keep-alive><Rank v-if="activeName=='gamePrize'" @getList='list1' :tableData='tableData1' labelX="游戏" labelY="积分" tabActive="integralDetail"></Rank></keep-alive>
-            </el-tab-pane>
-        </el-tabs> -->
 </template>
  <script>
 import {chartApi} from '@/api/api';

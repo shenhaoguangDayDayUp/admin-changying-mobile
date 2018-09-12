@@ -67,6 +67,17 @@ export function mbrStatus (value) {
       return "-";
   }
 }
+export function defaultStatusFilter (value) {
+  switch(value)
+  {
+    case false:
+      return "否";
+    case true:
+      return "是";
+    default:
+      return "-";
+  }
+}
 export function payMethod (value) {
     return {
         ALIPAY_PAGE: "支付宝网页",
@@ -146,6 +157,10 @@ Vue.filter('timeStampFilter', (val) => {
 Vue.filter('statusFilter', (val) => {
   if (!val) return '-';
   return mbrStatus(val)
+});
+Vue.filter('defaultAddressFilter', (val) => {
+  if (!val) return '否';
+  return defaultStatusFilter(val)
 });
 Vue.filter('submitStatusFilter', (val) => {
   return submitStatus(val)
@@ -239,6 +254,7 @@ Vue.prototype.$dateFilter = Vue.filter('dateFilter'); // 日期格式化
 Vue.prototype.$timeStampFilter = Vue.filter('timeStampFilter'); // 时间戳
 Vue.prototype.$currency = Vue.filter('currency'); // 金额
 Vue.prototype.$statusFilter = Vue.filter('statusFilter'); // 状态
+Vue.prototype.$defaultAddressFilter = Vue.filter('defaultAddressFilter'); // 默认地址显示
 Vue.prototype.$submitStatusFilter = Vue.filter('submitStatusFilter'); // 提交状态
 Vue.prototype.$paymentMethodFilter = Vue.filter('paymentMethodFilter'); // 支付方式
 Vue.prototype.$prizeTypeFilter = Vue.filter('prizeTypeFilter'); // 奖金池类型
