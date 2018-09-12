@@ -35,7 +35,7 @@
       </v-menu>
     </v-flex>
 
-            </v-flex>
+  
 
               <v-flex xs12
                     sm5
@@ -58,7 +58,7 @@
           label="结束时间"
           readonly
         ></v-text-field>
-        <v-date-picker :min='startMin'   locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
+        <v-date-picker :min='startMin' :max='max'    locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
           <v-spacer></v-spacer>
 
           <v-btn flat color="primary" @click="menus = false">取消</v-btn>
@@ -70,13 +70,11 @@
                     sm5
                     md3
                     offset-sm1
-              
-               
                     offset-lg1 class="btn-layout" >
-             <v-btn class='text-xs-left' flat color="primary">合计:{{amount}}</v-btn>  
-                <v-btn class='text-xs-rihgt'
+             <v-btn  class='text-xs-left mx-0 px-0' flat color="primary">合计:{{amount}}</v-btn>  
+                <v-btn  class='text-xs-rihgt px-0'
                        primary @click='reset'>重置</v-btn>
-                <v-btn class='text-xs-rihgt'
+                <v-btn class='text-xs-rihgt px-0'
                        color="info"
                        @click='search'>搜索</v-btn>
 
@@ -88,8 +86,8 @@
                     <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
                       <template slot-scope='props'   slot='items'>
                           <tr @click='gotoRow(props)'>
-                                               <td  style='width:300px'>{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
-        <td class="text-xs-center" style='width:300px'>{{ props.item.method|payMethod }}</td>
+                                               <td class="px-0">{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
+        <td class="text-xs-center px-0" style='width:300px'>{{ props.item.method|payMethod }}</td>
         <td style='color:blue' @click.stop='gotoItem(props.item.receiver.code )' class="text-xs-center">{{ props.item.receiver.code }}</td>
         <td class="text-xs-right">{{ props.item.amount|currency }}</td>
                           </tr>
@@ -116,17 +114,6 @@ import { mixin } from "@/mixins/search";
 export default {
   mixins: [mixin],
   name: "vip",
- 
-  computed: {
-    max(){
-        if(this.queryParams.end){
-          return  this.$dateFilter(new Date(this.queryParams.end)) 
-        }else{
-           return this.$dateFilter(new Date()) 
-        }
-    },
- 
-  },
   methods: {
       async getTotal(params,token) {
       const {start,end} = params

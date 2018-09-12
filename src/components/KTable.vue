@@ -25,11 +25,18 @@ export default {
   },
   data(){
     return{
-      select:['Foo', 'Bar', 'Fizz', 'Buzz']
+      // select:['Foo', 'Bar', 'Fizz', 'Buzz']
     }
 
   },
   computed: {
+      select(){
+        var list = []
+        for (var i=1;i<=this.pageCofig.length;i++){
+            list.push(i)
+        }
+        return  list
+      },
       index:{
           get(){
                 return this.page
@@ -42,7 +49,6 @@ export default {
   },
   render(h) {
     const self = this
-    console.log(11111)
     return h(
       "div",
       {
@@ -50,20 +56,78 @@ export default {
           "k-table": true
         }
       },
-      [this.renderTable(h),this.renderPage(h)]
+      [this.renderTable(h), this.pageCofig.length? this.renderPage(h):'']
     );
   },
   methods: {
-    renderPage(h){
-        if(this.index == 0){
-            this.index = 1
-        }
-      
+    renderSelect(h){ //下拉框
+    return h('div',{
+          class:{
+              total_page:true
+           }
+              },[
+               h('v-btn',{
+                  props:{
+                    flat:true,
+                     color:"primary"
+                  },
+                 domProps:{
+                  innerHTML:`共${this.pageCofig.length}页`
+                }
+               }),
+                 h('div',{
+                   class:{
+                      'mr-2':true 
+                   },
+                 domProps:{
+                  innerHTML:`前往`
+                }
+               }),
+               h('v-select',{
+              props:{
+                multiple:false,
+                items:this.select,
+                value: this.index ,
+              },
+              style:{
+                width:'50px'
+              },
+              class:{
+                
+              },
+              attrs:{
+                multiple:false
+              },
+              on:{
+                input:(val)=>{
+                    this.index = val;
+                   this.$emit('pageChage',this.index)
+                }
+              }
+        }),
+           h('div',{
+                   class:{
+                      'ml-2':true 
+                   },
+                 domProps:{
+                  innerHTML:`页`
+                }
+               }),
+             ])
+
+    },
+    renderPage(h){  // pagination
+       
       return  h('div',{class:{
           "text-xs-center":true,
           "m-t-20":true
       }},[
-           h('v-pagination',{
+          h('div',{
+            class:{
+               'page_content':true
+            }
+          },[
+                h('v-pagination',{
                 props:{...this.pageCofig,value:this.index},
                 on:{
                     'input':(value)=>{
@@ -71,19 +135,23 @@ export default {
                       this.$emit('pageChage',this.index)
                     },
                 }
-            },),
-                h('div',{
-                props:{},
-                on:{
+            }),
+           this.renderSelect(h)
+
+          ]),
+      
+            //   h('div',{
+            //     props:{},
+            //     on:{
                   
-                },
-                domProps:{
-                  innerHTML:`共${this.pageCofig.length}页`
-                }
-            },[])
+            //     },
+            //     domProps:{
+            //       innerHTML:`共${this.pageCofig.length}页`
+            //     }
+            // },[])
         ])
     },
-    renderTable(h) {
+    renderTable(h) { // table
      const slots = Object.keys(this.$slots)
       .reduce((arr, key) => arr.concat(this.$slots[key]), [])
       .map(vnode => {
@@ -109,5 +177,18 @@ export default {
 <style scoped='scss'>
  .m-t-20{
     margin-top:20px; 
+ }
+ .page_content{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+ .total_page{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   align-items: center
  }
 </style>
