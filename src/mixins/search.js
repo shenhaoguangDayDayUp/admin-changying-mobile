@@ -32,13 +32,13 @@ export var mixin = {
     mounted() {
         if (this.$route.query.index) {
             for (var key in this.$route.query) {
+                console.log(key)
                 if (key == 'end' || key == 'start') {
                     var timestamp3 = this.$route.query[key];  //声明一个时间戳
                     // var newDate = new Date();  //实例化一个Date对象
                     // newDate.setTime(timestamp3);
                     // this.queryParams[key] = newDate
                        this.queryParams[key] = timestamp3
-                    console.log(this.queryParams[key])
                 } else {
                     this.queryParams[key] = Number(this.$route.query[key])
                 }

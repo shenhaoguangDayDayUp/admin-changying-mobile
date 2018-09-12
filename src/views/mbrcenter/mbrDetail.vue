@@ -3,8 +3,20 @@
         <mbr-info></mbr-info>
         <v-tabs v-model="active" color="transparent" dark slider-color="#1976d2" class="cy-mbr-info">
             <v-tab ripple v-for="(v,i) in tabs" :key="i">{{v}}</v-tab>
-            <v-tab-item >
-                <mbr-table></mbr-table>
+            <v-tab-item>
+               <keep-alive><charge-detail></charge-detail></keep-alive>
+            </v-tab-item>
+            <v-tab-item>
+                <keep-alive><bet-detail></bet-detail></keep-alive>
+            </v-tab-item>
+             <v-tab-item>
+                 <keep-alive><prize-detail></prize-detail></keep-alive>
+            </v-tab-item>
+            <v-tab-item>
+                <keep-alive><redeem-detail></redeem-detail></keep-alive>
+            </v-tab-item>
+            <v-tab-item>
+                 <keep-alive><integral-detail></integral-detail></keep-alive>
             </v-tab-item>
         </v-tabs>
         
@@ -12,7 +24,11 @@
 </template>
 <script>
 import mbrInfo from './components/mbrInfo';
-import mbrTable from './components/mbrTable';
+import chargeDetail from './components/chargeDetail';
+import betDetail from './components/betDetail';
+import prizeDetail from './components/prizeDetail';
+import redeemDetail from './components/redeemDetail';
+import integralDetail from './components/integralDetail';
 export default {
     data(){
         return{
@@ -22,7 +38,11 @@ export default {
     },
     components:{
         mbrInfo,
-        mbrTable
+        chargeDetail,
+        betDetail,
+        prizeDetail,
+        redeemDetail,
+        integralDetail
     }
 }
 </script>

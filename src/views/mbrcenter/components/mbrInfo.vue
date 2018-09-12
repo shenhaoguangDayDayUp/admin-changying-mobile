@@ -68,7 +68,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .cy-mbr-info .v-subheader{
-    height:40px;
+    height:30px;
 }
 </style>
 
