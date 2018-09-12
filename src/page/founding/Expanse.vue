@@ -58,7 +58,7 @@
           label="结束时间"
           readonly
         ></v-text-field>
-        <v-date-picker :max='startMin'    locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
+        <v-date-picker :min='startMin' :max='max'     locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
           <v-spacer></v-spacer>
 
           <v-btn flat color="primary" @click="menus = false">取消</v-btn>
@@ -128,16 +128,7 @@ export default {
   mixins: [mixin,game],
   name: "vip",
  
-  computed: {
-    max(){
-        if(this.queryParams.end){
-          return  this.$dateFilter(new Date(this.queryParams.end)) 
-        }else{
-           return this.$dateFilter(new Date()) 
-        }
-    },
- 
-  },
+  
   methods: {
       async getTotal(params,token) {
       const {start,end} = params

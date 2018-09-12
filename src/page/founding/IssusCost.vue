@@ -58,7 +58,7 @@
           label="结束时间"
           readonly
         ></v-text-field>
-        <v-date-picker :min='startMin'   locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
+        <v-date-picker :min='startMin' :max='max'    locale='zh-Hans' v-model="queryParams.end" no-title scrollable>
           <v-spacer></v-spacer>
 
           <v-btn flat color="primary" @click="menus = false">取消</v-btn>

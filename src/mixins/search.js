@@ -96,6 +96,9 @@ export var mixin = {
             }else{
                 return this.$dateFilter(new Date())  
             }
+        },
+        max(){
+            return this.$dateFilter(new Date())  
         }
      
       },
