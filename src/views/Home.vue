@@ -9,22 +9,19 @@
                          
                      <template v-for="item in $router.options.routes">
                        <v-list-tile v-if="item.leaf" :key="item.name" :to="item.children[0].path">
-                         <font-awesome-icon :icon="item.iconCls"></font-awesome-icon>
-                          {{item.name}}
-                          </v-list-tile>
-                       <v-list-group v-else
-                                  v-model="item.active"
-                                  v-show="!item.hidden"
-                                  :key="item.name"
-                                    >
-                          <v-list-tile slot="activator">   
-                            <!-- <v-list-tile-action>{{item.iconCls}}
-                                 <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> 
-                                  </v-list-tile-action>   -->
+                         <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
+                          <v-list-tile-action> <i :class="item.iconCls"></i> </v-list-tile-action>
+                          <v-list-tile-content>{{item.name}}</v-list-tile-content>
+                        </v-list-tile>
+                          
+                       <v-list-group v-else v-model="item.active" v-show="!item.hidden" :key="item.name" >
+                          <v-list-tile slot="activator">  
+                                  <v-list-tile-action>
+                                  <i :class="item.iconCls"></i>
+                                  </v-list-tile-action>
                               <v-list-tile-content>
                                   <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                               </v-list-tile-content>
-                              
                           </v-list-tile>
                           <template v-for="subItem in item.children">
                                   <v-list-tile 
@@ -32,7 +29,10 @@
                                       :to='subItem.path'
                                       router
                                       ripple
-                                      v-if='!subItem.children&&subItem.menuShow' no-action>
+                                      v-if='!subItem.children&&subItem.menuShow'>
+                                       <v-list-tile-action>
+                                         <v-icon></v-icon>
+                                  </v-list-tile-action>
                                   <v-list-tile-content>
                                       <v-list-tile-title>{{ subItem.name}}{{items.children}}</v-list-tile-title>
                                   </v-list-tile-content>      

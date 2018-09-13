@@ -66,7 +66,7 @@ export default {
                 })
                 this.list = {'游戏编号:': data.code,'游戏密码:':data.password,'游戏名称:':data.name,'游戏描述:':data.description,'游戏链接:':data.link};
                 this.costList = {'返奖率:':data.prizepoolPct,'发行率:':data.issuancePct,'公益率:':data.welfarePct};
-                this.imageUrl = config.imgUrl[config.env.NODE_ENV] + data.icon ;
+                this.imageUrl = config.imgUrl[config.env.NODE_ENV] + data.icon;
                 this.bannerImageUrl = [];
                 data.banners.split(',').forEach((v, i) => {
                     if(v){

@@ -67,4 +67,7 @@ export default {
   .Rank .v-select__selection--comma{
     margin-left:8px;
   }
+  .v-list__tile__action{
+      min-width: 20px;
+  }
 </style>

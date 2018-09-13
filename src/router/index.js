@@ -27,7 +27,7 @@ const router =new Router({
         name: '总览',
         id:0,
         redirect:'/overView',
-        iconCls: ['fa','tachometer-alt'],
+        iconCls: 'fas fa-tachometer-alt',
         leaf:true,
         children:[
             {menuShow:false,name:'总览',path: '/overView',component: ()=>import('../views/overview/overView.vue')}
@@ -39,7 +39,7 @@ const router =new Router({
         component: Home,
         name: '数据分析',
         id:7, 
-        iconCls: ['fas','chart-line'],
+        iconCls: 'fas fa-chart-line',
         children: [
             {active:false,  path: '/rechargeTotalNumberChart', menuShow:true,component: ()=>import('../views/analysis/rechargeTotalNumberChart.vue'), name: '充值情況',parentId:7,id:71 },
             {active:false,  path: '/mbrRechargeRanking', menuShow:true,component: ()=>import('../views/analysis/rechargeRanking.vue'), name: '充值排行榜',parentId:7 ,id:76},
@@ -57,7 +57,7 @@ const router =new Router({
         component: Home,
         name: '会员中心',
         id:1, 
-        iconCls: ['fas','user'],//图标样式class
+        iconCls: 'fas fa-user',//图标样式class
         // redirect: '/vipList', 
         children: [
             { active:false, path: '/mbrList',menuShow:true, component: ()=>import('../views/mbrcenter/mbrList.vue'), name: '会员名单',parentId:1,id:11 },
@@ -70,7 +70,7 @@ const router =new Router({
         active:false, 
         name: '游戏中心',
         id:2,
-        iconCls: ['fa' ,'gamepad'],
+        iconCls: 'fa fa-gamepad',
         children: [
             {active:false, path: '/gameList',menuShow:true, component: ()=>import('../views/gameCenter/gameList'), name: '游戏清单',parentId:2,id:20},
             {active:false,  path: '/gameDetail/:code',menuShow:false, component: ()=>import('../views/gameCenter/gameDetail'), name: '游戏详情',parentId:20,id:21},
@@ -83,7 +83,7 @@ const router =new Router({
       id:3,
       name: '资金中心',
       redirect:'/topup',
-      iconCls: ['fa' ,'credit-card'],
+      iconCls: 'fa fa-credit-card',
       children:[
         {path:'/topup',menuShow:true,component: ()=>import('../page/founding/TopUp.vue'), name:'充值',parentId:3,id:30,active:false},
         {path:'/present',menuShow:true,component: ()=>import('../page/founding/Present.vue'), name:'赠送',parentId:3,id:31,active:false},
@@ -103,9 +103,9 @@ const router =new Router({
     active:false, 
     name: '测试',
     id:4,
-    iconCls: ['fa' ,'gamepad'],
+    iconCls: 'fa fa-gamepad',
     children: [
-        { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '测试清单',parentId:4,id:39},
+        { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '测试清单',parentId:4,id:40},
        
     ]
 },
