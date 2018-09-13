@@ -58,7 +58,7 @@ const router =new Router({
         name: '会员中心',
         id:1, 
         iconCls: 'fas fa-user',//图标样式class
-        // redirect: '/vipList', 
+        redirect: '/mbrList', 
         children: [
             { active:false, path: '/mbrList',menuShow:true, component: ()=>import('../views/mbrcenter/mbrList.vue'), name: '会员名单',parentId:1,id:11 },
             {active:false,  path: '/mbrDetail/:code', menuShow:false,component: ()=>import('../views/mbrcenter/mbrDetail.vue'), name: '会员详情',parentId:11 ,id:16,parentId1:10,parentId2:13},// 会员、贵宾、黑名单共用一个会员详情
@@ -69,6 +69,7 @@ const router =new Router({
         component: Home,
         active:false, 
         name: '游戏中心',
+        redirect:'/gameList',
         id:2,
         iconCls: 'fa fa-gamepad',
         children: [

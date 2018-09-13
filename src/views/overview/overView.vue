@@ -5,7 +5,9 @@
             <cy-card  v-for="(v,i) in infoArr" :key="i">
                 <!-- <div @click.native="v.query?pushDataQuery(v.push):pushData(v.push)"> -->
                     <div class="icon">
-                        <font-awesome-icon :icon="v.icon" :style="{color: v.color}"></font-awesome-icon>
+                        <!-- <font-awesome-icon :icon="v.icon" :style="{color: v.color}"></font-awesome-icon> -->
+                        <i :class="v.icon"  :style="{color: v.color}"></i>
+                        <!-- {{v.icon}} -->
                     </div>
                     <div class="box-container">
                         <div v-for="(vv,ii) in v.content" :key="ii">
@@ -26,7 +28,7 @@
     export default {
         data() {
             return {
-                iconArr:[['fa', 'user'],['fa', 'gamepad'], ['fas','exchange-alt'],['fa', 'coins'],['fa', 'piggy-bank'],['fas', 'tree'],['fa', 'yen-sign'],['fa', 'wallet'],['fa', 'gift']],
+                iconArr:['fas fa-user','fas fa-gamepad', 'fas fa-exchange-alt','fa fa-coins','fa fa-piggy-bank','fas fa-tree','fa fa-yen-sign','fa fa-wallet','fa fa-gift'],
                 colorArr:['#40c9c6','#40c9c6','#40c9c6','#36a3f7','#36a3f7','#36a3f7','#B6A2DE','#B6A2DE','#B6A2DE'],
                 pushArr:['会员名单','游戏清单','奖品清单','奖金池','发行费','公益金','充值','下注','奖金'], // 需跳转的页面
                 queryArr:[0,0,0,0,0,0,1,1,1],
@@ -97,6 +99,9 @@
         padding:0 24px;
         .el-col {
                 padding: 30px 20px;
+        }
+        .fa, .fas {
+            font-size: 40px; 
         }
         .icon{
             width:50px;

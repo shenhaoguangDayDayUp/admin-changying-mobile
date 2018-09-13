@@ -144,9 +144,11 @@ export default {
   methods: {
     gotoBread(item){
       if(!item.disabled){
+        console.log(5555)
+        console.log(item);
+        
       this.$router.push({name:item.text})
       }
-
     },
     async exit() {
       var token = {
