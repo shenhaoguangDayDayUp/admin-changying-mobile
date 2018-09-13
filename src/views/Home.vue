@@ -200,7 +200,9 @@ export default {
                     if(item1.id>item2.id){
                       return 1
                     }
-                  })              
+                  }) 
+                console.log(this.breadList)
+
                 this.breadcrumbs = this.breadList.map((res,index)=>{
                     if(this.breadList.length -1 !=index){
                         return {text:res.name,disabled:false}
@@ -210,6 +212,8 @@ export default {
                    
                 }).filter(item=>item.text)
                 },list)
+                console.log(1111)
+                console.log(this.breadcrumbs)
             }
                 this.$vuetify.goTo('#app', {duration: 300,offset:-100,easing: 'easeInOutCubic'})
    

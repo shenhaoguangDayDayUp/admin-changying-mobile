@@ -105,7 +105,7 @@ const router =new Router({
     id:4,
     iconCls: ['fa' ,'gamepad'],
     children: [
-        { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '游戏清单',parentId:2,id:20},
+        { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '测试清单',parentId:4,id:39},
        
     ]
 },

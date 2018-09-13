@@ -66,12 +66,13 @@ export var mixin = {
     created() {
         // this.$nextTick(()=>{
             if(!this.$route.query.start){
-                
                 var date1 = new Date();
                 var date2 = new Date();
-                date1 = new Date(date1 - 7 * 24 * 3600 * 1000)
-                // date1 = this.$date(date1, "start")
-                // date2 = this.$date(date2, "end")
+                if(this.$route.name == '游戏详情' || this.$route.name == '会员详情'){ //默认显示一个月的数据
+                    date1 = new Date().setMonth(new Date().getMonth() - 1)
+                }else{
+                    date1 = new Date(date1 - 7 * 24 * 3600 * 1000)
+                }
                 date1 = this.$dateFilter(date1,'yyyy-MM-dd')
                 date2 = this.$dateFilter(date2,'yyyy-MM-dd')
                 this.$router.push({ path: this.$route.path, query: { start: String(date1), end: String(date2), index: this.$route.query.index || 1 } });
@@ -158,7 +159,11 @@ export var mixin = {
             this.queryParams = queryParams;
             var date1 = new Date();
             var date2 = new Date();
-            date1 = new Date(date1 - 7 * 24 * 3600 * 1000)
+            if(this.$route.name == '游戏详情' || this.$route.name == '会员详情'){ //默认显示一个月的数据
+                date1 = new Date().setMonth(new Date().getMonth() - 1)
+            }else{
+                date1 = new Date(date1 - 7 * 24 * 3600 * 1000)
+            }
             // var params = Object.assign({}, _params, { start: String(date1), end: String(date2), index: 1 })
             this.queryParams.start = this.$dateFilter(date1,'yyyy-MM-dd') 
             this.queryParams.end = this.$dateFilter(date2,'yyyy-MM-dd')

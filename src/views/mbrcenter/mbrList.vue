@@ -6,7 +6,6 @@
                     <tr @click='rowClick(props)'>
                         <td class="px-0">{{ props.item.mobileNumber}}</td>
                         <td> {{ props.item.name}}</td>
-                        <!-- <td style='color:blue' @click.stop='gotoItem(props.item.receiver.code )' class="text-xs-center">{{ props.item.receiver.code }}</td> -->
                         <td >{{ props.item.status|statusFilter }}</td>
                     </tr>
                 </template>
@@ -61,14 +60,6 @@
 					}, {
 						headers: {
 							'x-auth-token': common.getCommon()
-						}
-					})
-					this.$router.push({
-						path: "/mbrList",
-						query: {
-							index:this.page,
-							mobileNumber: this.filters.mobileNumber,
-							name:this.filters.name
 						}
 					})
 					this.pageCofig.length = Math.ceil(data.count/12) 

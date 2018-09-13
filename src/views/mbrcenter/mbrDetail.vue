@@ -23,12 +23,7 @@
     </section>
 </template>
 <script>
-import mbrInfo from './components/mbrInfo';
-import chargeDetail from './components/chargeDetail';
-import betDetail from './components/betDetail';
-import prizeDetail from './components/prizeDetail';
-import redeemDetail from './components/redeemDetail';
-import integralDetail from './components/integralDetail';
+import {mbrInfo, chargeDetail, betDetail, prizeDetail, redeemDetail, integralDetail} from './components';
 export default {
     data(){
         return{
