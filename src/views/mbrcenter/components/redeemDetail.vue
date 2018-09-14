@@ -75,7 +75,7 @@ export default {
        }
    },
    methods:{
-         // 充值明细
+         // 兑换
         async getList(params = Object.assign({}, this.tableParams, this.queryParams)) {
             console.log(params);
             if(params.start&&params.end){
@@ -91,7 +91,6 @@ export default {
                 } catch (error) {}
             }else{}
         },
-        // 充值合计
         async getTotal(params) {
             const {start,end} = params
             const query = Object.assign({},{start:this.$date(start),end:this.$date(end)},{id:this.$route.params.code})

@@ -4,19 +4,19 @@
         <v-tabs v-model="active" color="transparent" dark slider-color="#1976d2" class="cy-mbr-info">
             <v-tab ripple v-for="(v,i) in tabs" :key="i">{{v}}</v-tab>
             <v-tab-item>
-               <keep-alive><charge-detail></charge-detail></keep-alive>
+               <keep-alive><charge-detail v-if="active=='0'"></charge-detail></keep-alive>
             </v-tab-item>
             <v-tab-item>
-                <keep-alive><bet-detail></bet-detail></keep-alive>
+                <keep-alive><bet-detail v-if="active=='1'"></bet-detail></keep-alive>
             </v-tab-item>
              <v-tab-item>
-                 <keep-alive><prize-detail></prize-detail></keep-alive>
+                 <keep-alive><prize-detail v-if="active=='2'"></prize-detail></keep-alive>
             </v-tab-item>
             <v-tab-item>
-                <keep-alive><redeem-detail></redeem-detail></keep-alive>
+                <keep-alive><redeem-detail v-if="active=='3'"></redeem-detail></keep-alive>
             </v-tab-item>
             <v-tab-item>
-                 <keep-alive><integral-detail></integral-detail></keep-alive>
+                 <keep-alive><integral-detail v-if="active=='4'"></integral-detail></keep-alive>
             </v-tab-item>
         </v-tabs>
         
