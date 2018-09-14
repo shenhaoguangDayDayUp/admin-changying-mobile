@@ -96,9 +96,9 @@
                         </v-list-tile>
                         <v-divider dark
                                    :key="1"></v-divider>
-                        <v-list-tile>
+                        <!-- <v-list-tile>
                             <v-list-tile-title>修改密码</v-list-tile-title>
-                        </v-list-tile>
+                        </v-list-tile> -->
                     </v-list>
 
                 </v-menu>

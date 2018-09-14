@@ -4,7 +4,7 @@
               justify-center>
         <v-dialog v-model="dialog"
                   persistent
-                  max-width="500px">
+                  max-width="350px" class="login">
 
             <v-card>
                 <v-card-title>
@@ -28,6 +28,7 @@
                                     <v-text-field :rules="nameRules"
                                                   v-model="form.mobileNumber"
                                                   label="帐号"
+                                                  counter="11"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
                                                   required></v-text-field>
                                     <v-text-field :rules="passwordRules"
                                                   v-model="form.password"
@@ -95,7 +96,6 @@ export default {
         username: "admin",
         password: "123456"
       },
-
       fields: {
         username: { label: "Username" },
         password: { label: "Password", type: "password" }
@@ -114,9 +114,7 @@ export default {
           common.setCommon(headers["x-auth-token"]);
           user.setLoginUser(data);
           this.$router.push({path:'/'})
-        } catch (error) {
-            console.log(error)
-        }
+        } catch (error) {}
       }
     },
     clear() {
@@ -128,3 +126,18 @@ export default {
   mounted() {}
 };
 </script>
+<style lang="scss" scoped>
+.login{
+  .container{
+    padding:0!important;
+  }
+  
+}
+</style>
+<style>
+.login .v-dialog{
+    margin-top: -60px!important;
+  }
+</style>
+
+

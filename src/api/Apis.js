@@ -42,6 +42,9 @@ axios.interceptors.response.use(function (response) {
             window.global.$router.push({path:'/login',query:{back:window.global.$route.fullPath}})
             break;
         case 456:
+        // console.log(111111)
+        // alert(window.global.$$Loading)
+        // window.global.$$Loading.present.show()
         // window.global.$message.error(error.response.data);
             break;
         case 567:
