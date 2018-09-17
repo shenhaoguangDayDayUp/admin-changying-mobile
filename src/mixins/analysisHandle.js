@@ -219,12 +219,14 @@ export var chartMixin = {
             });
         },
         goto(page){
-            const end = this.$date((Date.parse(new Date())), "end");
-            const start = this.$date((Date.parse(new Date())), "start");
+            // start:this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd'),
+
+            const end = this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd');
+            const start = this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd');
             if(this.requestID<25){
                 this.$router.push({path:page,query:{start:start,end:end,index:1}});
             }else{
-                this.$router.push({path:page,query:{start:this.$date(new Date(new Date().getTime() - this.requestID/24 * 24 * 3600 * 1000), "start"),end:end,index:1}})
+                this.$router.push({path:page,query:{start:this.$dateFilter(new Date(new Date().getTime() - this.requestID/24 * 24 * 3600 * 1000), 'yyyy-MM-dd'),end:end,index:1}})
             }     
         },
     }

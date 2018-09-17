@@ -1,6 +1,7 @@
 <template>
     <div class="Rank">
         <v-select v-show="selectShow" :items="options" label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)"></v-select>
+         <div class="refresh"><i :class="icon" @click="getList()"></i></div> 
          <!--数据分析模块排行表-->
         <v-data-table :headers="headers" :items="tableData" hide-actions class="elevation-1" v-if="rankTable">
             <template slot="items" slot-scope="props" > 
@@ -25,7 +26,7 @@ export default {
     mixins: [rankingMixin], 
     data(){
         return{
-             icon:['fa','sync-alt'], 
+             icon:'fa fa-sync-alt', //刷新
              requestId:6,
         }
     },
@@ -88,3 +89,8 @@ export default {
      }
 }
 </script>
+<style>
+/* .Rank .v-input{
+    width:80%;
+} */
+</style>

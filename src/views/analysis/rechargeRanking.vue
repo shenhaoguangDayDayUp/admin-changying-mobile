@@ -18,7 +18,7 @@
          return{
              activeName:'mbrRechargeRank',
              tableData:[],
-             active:1
+             active:1,
          }
      },
      methods:{

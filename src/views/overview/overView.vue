@@ -1,10 +1,10 @@
 <template>
     <section>
-        <!-- <div class="refresh"><font-awesome-icon :icon="icon" @click="getInfo()"></font-awesome-icon></div>   -->
+        <div class="refresh"><i :class="icon" @click="getInfo()"></i></div>  
         <div class="panel-group">
-            <cy-card  v-for="(v,i) in infoArr" :key="i">
+            <cy-card  v-for="(v,i) in infoArr" :key="i" @click.native="v.query?pushDataQuery(v.push):(v.push?pushData(v.push):'')">
                 <!-- <div @click.native="v.query?pushDataQuery(v.push):pushData(v.push)"> -->
-                    <div class="icon">
+                    <div class="icon" >
                         <!-- <font-awesome-icon :icon="v.icon" :style="{color: v.color}"></font-awesome-icon> -->
                         <i :class="v.icon"  :style="{color: v.color}"></i>
                         <!-- {{v.icon}} -->
@@ -30,14 +30,15 @@
             return {
                 iconArr:['fas fa-user','fas fa-gamepad', 'fas fa-exchange-alt','fa fa-coins','fa fa-piggy-bank','fas fa-tree','fa fa-yen-sign','fa fa-wallet','fa fa-gift'],
                 colorArr:['#40c9c6','#40c9c6','#40c9c6','#36a3f7','#36a3f7','#36a3f7','#B6A2DE','#B6A2DE','#B6A2DE'],
-                pushArr:['会员名单','游戏清单','奖品清单','奖金池','发行费','公益金','充值','下注','奖金'], // 需跳转的页面
-                queryArr:[0,0,0,0,0,0,1,1,1],
+                pushArr:['会员名单','游戏清单','','奖金池','发行费','公益金','充值','下注','奖金'], // 需跳转的页面
+                queryArr:[0,0,0,0,0,0,1,1,1], //需不需要带时间查询字符串
                 dataArr:[],
                 infoArr: [],
-                icon:['fa','sync-alt'], //刷新
+                icon:'fa fa-sync-alt', //刷新
                 defaultQuery:{
-                    // start:this.$date((Date.parse(new Date())), "start"),
-                    // end: this.$date((Date.parse(new Date())), "end"),
+                    // this.$dateFilter(date1,'yyyy-MM-dd')
+                    start:this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd'),
+                    end: this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd'),
                 },
                 loading:false,
             }
@@ -76,24 +77,7 @@
     }
 </script>
 <style lang="scss" scoped>
-        .refresh{  
-            width:100%;
-            height:25px;
-            svg{
-            height:25px;
-            width:25px;
-            float:right;
-            color:#ABB6B5;
-            cursor: pointer;
-            }
-            svg:hover{
-                color:#36a3f7;
-                transition:all .2s ease-in 0s;
-            -moz-transition:all .2s ease-in 0s; /* Firefox 4 */
-            -webkit-transition:all .2s ease-in 0s; /* Safari and Chrome */
-            -o-transition:all .2s ease-in 0s; /* Opera */
-            }
-        }
+        
     .panel-group{
         margin-bottom: 20px;
         padding:0 24px;
