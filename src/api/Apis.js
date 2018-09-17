@@ -21,7 +21,7 @@ axios.interceptors.request.use(function (config) {
     //         window.global.$root.eventHub.$emit('LodingHide')  
     //     }
     //    })
-    // window.global.$$Loading.present.show()
+    window.global.$$Loading.present.show()
        
      
     return config;
@@ -30,7 +30,7 @@ axios.interceptors.request.use(function (config) {
     
 });
 axios.interceptors.response.use(function (response) {
-    // window.global.$$Loading.present.hide()
+    window.global.$$Loading.present.hide()
 
  return response;
 }, function (error) {
@@ -41,19 +41,13 @@ axios.interceptors.response.use(function (response) {
             window.global.$router.push({path:'/login',query:{back:window.global.$route.fullPath}})
             break;
         case 456:
-        console.log(111111)
-        console.log(window.global)
-        // console.log(window.global.$$Message.show)
-        // alert(window.global.$$Loading)
-        console.log(window.global.$$Message.present)
-        window.global.$$Message.present.show()
-        // window.global.$$message.error(error.response.data);
+        window.global.$$Message.present.show(error.response.data)
             break;
         case 567:
-        // window.global.$message.error('操作失败！');
+        window.global.$$Message.present.show('操作失败')
             break;
         default:
-        // window.global.$message.error('操作失败！');
+        window.global.$$Message.present.show('操作失败')
             break;
     }
     // window.global.$vux.loading.hide();

@@ -7,9 +7,9 @@
   <div  :visible.sync="show" class="text-xs-center cy-message">
     <v-dialog   v-model="showToast"
         no-click-animation
-        transition="none"
-         fullscreen>
-      消息提示
+        transition="true"
+         max-width="100" >
+      <div class="msg-tip">{{message}}</div>
     </v-dialog>
   </div>
 </template>
@@ -18,7 +18,10 @@
 export default {
   name: "Message",
   props: {
-    visible: {}
+    visible: {},
+    messsage:{
+      type:'String',
+    }
   },
   computed: {
     show: {
@@ -37,9 +40,15 @@ export default {
 
     };
   },
+  mounted(){
+    if(this.showToast){
+      
+    }
+  },
   watch: {
     showToast(val) { 
-      if (val) {// 设置弹框出现不能滚动
+      if (val) {
+        val ? setTimeout(()=>{this.showToast = false;},560) : ''
         // window.global.$root.eventHub.$emit("LodingShow");
       } else {
         // window.global.$root.eventHub.$emit("LodingHide");
@@ -74,6 +83,19 @@ export default {
             opacity: 1; 
       }
           /* background: #424242; */
-
+.cy-message .v-dialog--fullscreen{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: #424242!important;
+    color: #c5c5c5;
+    padding: 10px 0;
+}
+.msg-tip{
+    background: #424242!important;
+    color: #c5c5c5;
+    padding: 10px 0;
+    border-radius: 2px;
+}
 </style>
 
