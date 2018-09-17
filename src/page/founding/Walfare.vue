@@ -142,7 +142,7 @@ export default {
         // console.log(row)
       },
       gotoItem(row){
-        console.log(row)
+        this.$router.push({name:'会员详情',params:{code:row}})
 
       },
     async getList(params = Object.assign({}, this.tableParams, this.queryParams)) {

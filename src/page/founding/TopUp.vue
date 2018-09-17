@@ -128,7 +128,9 @@ export default {
         // console.log(row)
       },
       gotoItem(row){
-        console.log(row)
+
+        this.$router.push({name:'会员详情',params:{code:row}})
+
 
       },
     async getList(params = Object.assign({}, this.tableParams, this.queryParams)) {
@@ -143,9 +145,7 @@ export default {
       }
    const { data } = await rechargesApi.query(params, token);
    this.pageCofig.length = Math.ceil(data.count/12) 
-   this.list.items = data.records
-   console.log(9999)
-    this.$$Message.present.show()
+   this.list.items = data.records;
    console.log(this.list)
    this.getTotal(params,token);
     //   this.items = data;
