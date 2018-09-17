@@ -70,4 +70,22 @@ export default {
   .v-list__tile__action{
       min-width: 20px;
   }
+  .refresh{  
+            width:100%;
+            height:25px;}
+            .refresh i{
+            height:25px;
+            width:25px;
+            float:right;
+            color:#ABB6B5;
+            cursor: pointer;
+            line-height: 25px;
+            }
+            .refresh i:hover{
+                color:#36a3f7;
+                transition:all .2s ease-in 0s;
+            -moz-transition:all .2s ease-in 0s; /* Firefox 4 */
+            -webkit-transition:all .2s ease-in 0s; /* Safari and Chrome */
+            -o-transition:all .2s ease-in 0s; /* Opera */
+            }
 </style>

@@ -80,7 +80,7 @@
 
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
-                <span class="mx-3">欢迎您 !{{userName}} </span>
+                <!-- <span class="mx-3">欢迎您 !{{userName}} </span> -->
                 <v-menu offset-y>
                     <v-btn icon
                            slot="activator">

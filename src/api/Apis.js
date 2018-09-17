@@ -42,7 +42,7 @@ axios.interceptors.response.use(function (response) {
             break;
         case 456:
         console.log(111111)
-        // console.log(window.global.$$Message.present.show())
+        console.log(window.global)
         // console.log(window.global.$$Message.show)
         // alert(window.global.$$Loading)
         console.log(window.global.$$Message.present)

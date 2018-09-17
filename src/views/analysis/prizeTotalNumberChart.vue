@@ -6,6 +6,7 @@
                 <v-btn class='text-xs-right' primary @click='reset'>重置</v-btn>
                 <v-btn class='text-xs-right' color="info" @click='search'>搜索</v-btn>
         </v-flex>
+        <div class="refresh"><i :class="icon" @click="search()"></i></div>  
         <div id="prizeChart" style="width:100%; height:700px;"  @click="goto('/reword')"></div>
         
     </div>
@@ -20,7 +21,7 @@
         mixins: [chartMixin,game], // 混入
         data(){
            return {
-                icon:['fa','sync-alt'], //刷新
+               icon:'fa fa-sync-alt', //刷新
             }
         },
         async mounted() {
