@@ -46,7 +46,7 @@ export default {
     align-items:center
   }
   .v-tabs__item{
-    color: #1976d2;
+    color: #1976d2!important;
   }
   .v-tabs__item:not(.v-tabs__item--active){
     color: #2c3e50;
