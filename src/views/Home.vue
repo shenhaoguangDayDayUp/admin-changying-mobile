@@ -126,6 +126,7 @@
             <!-- </v-content> -->
             <!-- <v-footer app></v-footer> -->
         </v-app>
+        
     </div>
 
 </template>
@@ -133,6 +134,7 @@
 import { common, user } from "@/logic";
 import { loginApi } from "@/api/api";
 import { mapGetters } from "vuex";
+
 export default {
   name: "Home",
   computed: {

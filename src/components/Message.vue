@@ -1,14 +1,21 @@
 <template>
-  <div :visible.sync="show" class="text-xs-center test">
+  <!-- <div :visible.sync="show" class="text-xs-center test">
     <v-dialog  v-model="showToast" no-click-animation transition="none" fullscreen >
       测试测试
+    </v-dialog>
+  </div> -->
+  <div  :visible.sync="show" class="text-xs-center cy-message">
+    <v-dialog  max-width="100"  v-model="showToast" style="background: #424242!important;
+    color: #c5c5c5;
+    padding: 10px 0;">
+      消息提示
     </v-dialog>
   </div>
 </template>
 <script>
 
 export default {
-  name: "Loading",
+  name: "Message",
   props: {
     visible: {}
   },
@@ -35,11 +42,11 @@ export default {
 };
 </script>
 <style scoped='scss'>
-.test{
+/* .test{
   height:100vh;
   width:100%;
   background:red;
-}
+} */
     .back-loading{
     opacity: 0.76;
     background-color: #212121;
@@ -59,4 +66,7 @@ export default {
             background: black;
             opacity: 1; 
       }
+          /* background: #424242; */
+
 </style>
+

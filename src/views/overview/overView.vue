@@ -71,7 +71,7 @@
         },
         components: {
             CountTo,
-            CyCard
+            CyCard,
         },
     }
 </script>
