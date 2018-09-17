@@ -122,8 +122,6 @@ export default {
       this.$refs.form.reset();
     }
   },
-
-  mounted() {}
 };
 </script>
 <style lang="scss" scoped>

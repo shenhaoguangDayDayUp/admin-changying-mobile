@@ -98,18 +98,18 @@ const router =new Router({
       ]
 
   },
-  {
-    path: '/',
-    component: Home,
-    active:false, 
-    name: '测试',
-    id:4,
-    iconCls: 'fa fa-gamepad',
-    children: [
-        { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '测试清单',parentId:4,id:40},
+//   {
+//     path: '/',
+//     component: Home,
+//     active:false, 
+//     name: '测试',
+//     id:4,
+//     iconCls: 'fa fa-gamepad',
+//     children: [
+//         { active:false, path: '/font',menuShow:true, component: ()=>import('../page/menber/MenberList.vue'), name: '测试清单',parentId:4,id:40},
        
-    ]
-},
+//     ]
+// },
     {
         path: '*',
         hidden: true,

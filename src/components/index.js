@@ -78,8 +78,9 @@ export  const pluginMessage = {
         const present = {
             show(options) {
                 console.log(22222)
-                console.log($vms )
-                $vms.showToast = true
+                console.log($vms)
+                $vms.showToast = true;
+                $vms.message = options;
                 console.log(22222)
             },
             hide() {

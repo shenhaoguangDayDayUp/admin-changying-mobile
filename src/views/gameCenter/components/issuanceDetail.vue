@@ -1,6 +1,8 @@
 <template>
     <div>
-        <v-flex xs12 sm5 md3>
+        
+        <v-layout wrap row>
+        <v-flex xs5 sm5 md3>
             <v-menu ref="start" :close-on-content-click="false" v-model="menu"
                 :nudge-right="40" :return-value.sync="queryParams.start" lazy
                 transition="scale-transition" offset-y full-width min-width="290px" >
@@ -12,7 +14,7 @@
                 </v-date-picker>
             </v-menu>
         </v-flex>
-        <v-flex xs12 sm5 md3>
+        <v-flex xs5 sm5 md3 offset-xs2>
             <v-menu ref="end" :close-on-content-click="false" v-model="menus"
                 :nudge-right="40" :return-value.sync="queryParams.end" lazy
                 transition="scale-transition" offset-y full-width min-width="290px" >
@@ -24,6 +26,7 @@
                 </v-date-picker>
             </v-menu>
         </v-flex>
+        </v-layout>
         <v-flex xs12 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
              <v-btn  class='text-xs-left mx-0 px-0' flat color="primary">合计:{{amount}}</v-btn>  
                 <v-btn  class='text-xs-rihgt px-0' primary @click='reset'>重置</v-btn>
