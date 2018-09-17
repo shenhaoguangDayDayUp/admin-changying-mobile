@@ -5,7 +5,7 @@
 
     <v-layout wrap>
 
-      <v-flex xs12
+      <v-flex xs5
               sm5
               md3>
         <v-menu ref="start"
@@ -38,7 +38,7 @@
         </v-menu>
       </v-flex>
 
-      <v-flex xs12
+      <v-flex xs5 offset-xs2
               sm5
               md3>
         <v-menu ref="end"

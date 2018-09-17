@@ -66,53 +66,53 @@ export default {
               total_page:true
            }
               },[
-               h('v-btn',{
-                  props:{
-                    flat:true,
-                     color:"primary"
-                  },
-                 domProps:{
-                  innerHTML:`共${this.pageCofig.length}页`
-                }
-               }),
-                 h('div',{
-                   class:{
-                      'mr-2':true 
-                   },
-                 domProps:{
-                  innerHTML:`前往`
-                }
-               }),
-               h('v-select',{
-              props:{
-                multiple:false,
-                items:this.select,
-                value: this.index ,
-              },
-              style:{
-                width:'50px'
-              },
-              class:{
+              //  h('v-btn',{
+              //     props:{
+              //       flat:true,
+              //        color:"primary"
+              //     },
+              //    domProps:{
+              //     innerHTML:`共${this.pageCofig.length}页`
+              //   }
+              //  }),
+              //    h('div',{
+              //      class:{
+              //         'mr-2':true 
+              //      },
+              //    domProps:{
+              //     innerHTML:`前往`
+              //   }
+              //  }),
+        //        h('v-select',{
+        //       props:{
+        //         multiple:false,
+        //         items:this.select,
+        //         value: this.index ,
+        //       },
+        //       style:{
+        //         width:'50px'
+        //       },
+        //       class:{
                 
-              },
-              attrs:{
-                multiple:false
-              },
-              on:{
-                input:(val)=>{
-                    this.index = val;
-                   this.$emit('pageChage',this.index)
-                }
-              }
-        }),
-           h('div',{
-                   class:{
-                      'ml-2':true 
-                   },
-                 domProps:{
-                  innerHTML:`页`
-                }
-               }),
+        //       },
+        //       attrs:{
+        //         multiple:false
+        //       },
+        //       on:{
+        //         input:(val)=>{
+        //             this.index = val;
+        //            this.$emit('pageChage',this.index)
+        //         }
+        //       }
+        // }),
+          //  h('div',{
+          //          class:{
+          //             'ml-2':true 
+          //          },
+          //        domProps:{
+          //         innerHTML:`页`
+          //       }
+          //      }),
              ])
 
     },

@@ -28,8 +28,6 @@ export  const plugin = {
                     console.log(this)
                 }  
             })
-            console.log(2222)
-            console.log($vm)
             document.body.appendChild($vm.$el)
         }
         const present = {
@@ -57,11 +55,13 @@ export  const plugin = {
         })
     }
 }
+
+let $vms;
 export  const pluginMessage = {
     install(vue, options = {}) {
         const Confirm = vue.extend(MessageComponent)       
-        if (!$vm) {
-            $vm = new Confirm({
+        if (!$vms) {
+            $vms = new Confirm({
                 el: document.createElement('div'),
                 propsData: {
                     title: ''
@@ -72,16 +72,18 @@ export  const pluginMessage = {
                     console.log(this)
                 }
             })
-            console.log(3333)
-            console.log($vm)
-            document.body.appendChild($vm.$el)
+
+            document.body.appendChild($vms.$el)
         }
         const present = {
             show(options) {
-                $vm.showToast = true
+                console.log(22222)
+                console.log($vms )
+                $vms.showToast = true
+                console.log(22222)
             },
             hide() {
-                $vm.showToast = false
+                $vms.showToast = false
             }
         }
 

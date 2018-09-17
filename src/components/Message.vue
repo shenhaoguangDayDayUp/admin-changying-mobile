@@ -5,9 +5,9 @@
     </v-dialog>
   </div> -->
   <div  :visible.sync="show" class="text-xs-center cy-message">
-    <v-dialog  max-width="100"  v-model="showToast" style="background: #424242!important;
-    color: #c5c5c5;
-    padding: 10px 0;">
+    <v-dialog    v-model="showToast"  no-click-animation
+        transition="none"
+         fullscreen>
       消息提示
     </v-dialog>
   </div>

@@ -45,6 +45,7 @@ axios.interceptors.response.use(function (response) {
         // console.log(window.global.$$Message.present.show())
         // console.log(window.global.$$Message.show)
         // alert(window.global.$$Loading)
+        console.log(window.global.$$Message.present)
         window.global.$$Message.present.show()
         // window.global.$$message.error(error.response.data);
             break;
