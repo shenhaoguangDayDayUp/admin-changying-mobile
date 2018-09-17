@@ -145,6 +145,7 @@ export default {
    this.pageCofig.length = Math.ceil(data.count/12) 
    this.list.items = data.records
    console.log(9999)
+    this.$$Message.present.show()
    console.log(this.list)
    this.getTotal(params,token);
     //   this.items = data;

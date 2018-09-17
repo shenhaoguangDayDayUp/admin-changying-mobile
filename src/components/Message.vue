@@ -5,7 +5,8 @@
     </v-dialog>
   </div> -->
   <div  :visible.sync="show" class="text-xs-center cy-message">
-    <v-dialog    v-model="showToast"  no-click-animation
+    <v-dialog   v-model="showToast"
+        no-click-animation
         transition="none"
          fullscreen>
       消息提示
@@ -29,6 +30,12 @@ export default {
         return this.$emit("update:visible", val);
       }
     }
+  },
+  data() {
+    return {
+      showToast: false,
+
+    };
   },
   watch: {
     showToast(val) { 
