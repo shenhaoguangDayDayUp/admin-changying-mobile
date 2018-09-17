@@ -71,18 +71,28 @@
           </v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex xs12
-              sm5
-              md3
-              offset-sm1
-              offset-lg1
+        <v-flex xs6
+              justify-start
               class="btn-layout">
+        <v-btn small
+               class='text-xs-left mx-0 px-0'
+               flat
+               color="primary">合计:{{amount}}</v-btn>
 
-        <v-btn class='text-xs-rihgt'
+      </v-flex>
+      <v-flex xs6
+              justify-end
+              class="btn-layout">
+        <v-btn small
+               round
+               mx-0
+               class='text-xs-rihgt px-0'
                primary
                @click='reset'>重置</v-btn>
-        <v-btn class='text-xs-rihgt'
+        <v-btn small
+               class='text-xs-rihgt px-0 mx-0'
                color="info"
+               round
                @click='search'>搜索</v-btn>
 
       </v-flex>
@@ -201,11 +211,6 @@ export default {
 .rest {
   background: red;
 }
-.btn-layout {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
+
 </style>
 

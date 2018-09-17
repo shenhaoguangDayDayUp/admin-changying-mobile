@@ -78,19 +78,31 @@
                               item-value="code"
                               label="游戏"></v-select>
                     </v-flex>
-     <v-flex xs12
-                    sm5
-                    md3
-                    offset-sm1
-                    offset-lg1 class="btn-layout" >
-             <v-btn  class='text-xs-left mx-0 px-0' flat color="primary">合计:{{amount}}</v-btn>  
-                <v-btn  class='text-xs-rihgt px-0'
-                       primary @click='reset'>重置</v-btn>
-                <v-btn class='text-xs-rihgt px-0'
-                       color="info"
-                       @click='search'>搜索</v-btn>
+      <v-flex xs6
+              justify-start
+              class="btn-layout">
+        <v-btn small
+               class='text-xs-left mx-0 px-0'
+               flat
+               color="primary">合计:{{amount}}</v-btn>
 
-            </v-flex>
+      </v-flex>
+      <v-flex xs6
+              justify-end
+              class="btn-layout">
+        <v-btn small
+               round
+               mx-0
+               class='text-xs-rihgt px-0'
+               primary
+               @click='reset'>重置</v-btn>
+        <v-btn small
+               class='text-xs-rihgt px-0 mx-0'
+               color="info"
+               round
+               @click='search'>搜索</v-btn>
+
+      </v-flex>
         </v-layout>
         <v-layout row>
             <v-flex xs12>
@@ -206,12 +218,7 @@ export default {
   .rest{
     background: red;
   }
-  .btn-layout{
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-end;
-    align-items:center
-  }
+
   input{
     color: transparent !important;
     text-shadow: 0 0 0 #000;

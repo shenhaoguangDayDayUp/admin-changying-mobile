@@ -42,9 +42,14 @@ export default {
 .btn-layout{
     display:flex;
     flex-direction:row;
-    justify-content:flex-end;
+    min-width:60px;
+    
+    /* justify-content:flex-end; */
     align-items:center
   }
+ .btn-layout button{
+     min-width: 60px; 
+   }
   .v-tabs__item{
     color: #1976d2;
   }
