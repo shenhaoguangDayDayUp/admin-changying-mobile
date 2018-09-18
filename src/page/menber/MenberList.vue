@@ -28,7 +28,7 @@
                        primary @click='reset'>重置</v-btn>
                 <v-btn class='text-xs-rihgt'
                        color="info"
-                       @click='search'>搜索</v-btn>
+                       @click='search'>过滤</v-btn>
 
             </v-flex>
         </v-layout>

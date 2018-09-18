@@ -3,7 +3,7 @@
         <v-select :items="options" label="时间" menu-props="auto" v-model="value"></v-select>
         <v-flex xs12 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
                 <v-btn class='text-xs-right' primary @click='reset'>重置</v-btn>
-                <v-btn class='text-xs-right' color="info" @click='search'>搜索</v-btn>
+                <v-btn class='text-xs-right' color="info" @click='search'>过滤</v-btn>
         </v-flex>
         <div class="refresh"><i :class="icon" @click="search()"></i></div>  
         <div id="chartLine" style="width:100%; height:700px;"  @click="goto('/topup')"></div>

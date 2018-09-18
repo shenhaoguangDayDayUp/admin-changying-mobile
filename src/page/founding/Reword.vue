@@ -100,7 +100,7 @@
                class='text-xs-rihgt px-0 mx-0'
                color="info"
                round
-               @click='search'>搜索</v-btn>
+               @click='search'>过滤</v-btn>
 
       </v-flex>
         </v-layout>
@@ -144,7 +144,7 @@ export default {
   methods: {
       async getTotal(params,token) {
       const {start,end} = params
-      const query = Object.assign({},{start:start,end:end})
+      const query = Object.assign({},{start:start,end:end,application:params.application})
    const { data } = await rewordDetApi.query(
         query,
         token

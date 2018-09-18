@@ -1,8 +1,8 @@
 /**
- * 搜索或者重置方法
+ * 过滤或者重置方法
  *
  * @param {any} tableParams 列表请求参数
- * @param {any} queryParams 搜索请求参数
+ * @param {any} queryParams 过滤请求参数
  * @param {any} type searchOrRest
  * @returns tableParams queryParams _params
  */

@@ -96,7 +96,7 @@
                class='text-xs-rihgt px-0 mx-0'
                color="info"
                round
-               @click='search'>搜索</v-btn>
+               @click='search'>过滤</v-btn>
 
       </v-flex>
     </v-layout>

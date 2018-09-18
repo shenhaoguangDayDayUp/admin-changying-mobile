@@ -95,7 +95,7 @@ export let rechargeCapApi = new Api('rule/rechargeCap','id')//业务规则-充�
 
 export let productListApi = new Api('store/product/list','id')//兑换中心列表
 export let productDetailApi = new Api('store/product/entity','id')//兑换中心列表
-export let productSearchApi = new Api('store/product/search','id')//搜索
+export let productSearchApi = new Api('store/product/search','id')//过滤
 export let productAddApi = new Api(`store/product/add`,'id')//新增
 
 export let productPreviewApi = new Api('store/product/preview','id')//预览
