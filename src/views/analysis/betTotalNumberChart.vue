@@ -24,6 +24,8 @@
             }
         },
         async mounted() {
+            console.log(999)
+            console.log(this.value);
             await this.reset();
         },
         methods: {

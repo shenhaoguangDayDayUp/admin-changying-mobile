@@ -4,12 +4,12 @@
             <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
                 <template slot-scope='props' slot='items'>
                     <tr @click='rowClick(props)'>
-                        <td  class="px-0"> {{ props.item.code}}</td>
-                        <td >{{ props.item.name}}</td>
-                        <td >{{ props.item.prizepoolPct}}</td>
-                        <td >{{ props.item.issuancePct}}</td>
-                        <td >{{ props.item.welfarePct}}</td>
-                        <td >{{ props.item.status|statusFilter}}</td>
+                        <td  class="px-2"> {{ props.item.code}}</td>
+                        <td class="text-xs-center px-1" >{{ props.item.name}}</td>
+                        <td class="text-xs-center px-0">{{ props.item.prizepoolPct}}</td>
+                        <td class="text-xs-center px-0">{{ props.item.issuancePct}}</td>
+                        <td  class="text-xs-center">{{ props.item.welfarePct}}</td>
+                        <td class="text-xs-center px-1">{{ props.item.status|statusFilter}}</td>
                     </tr>
                 </template>
             </k-table>
@@ -77,12 +77,7 @@
             },
 			//进入用户详情
 			rowClick(prop) {
-				this.$router.push({
-					name:'游戏详情',
-					params: {
-						code: prop.item.code
-					}
-				})
+				this.$router.push({ name:'游戏详情', params: { code: prop.item.code } })
 			},
 		},
 	}

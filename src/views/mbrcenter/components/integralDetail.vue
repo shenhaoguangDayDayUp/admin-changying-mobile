@@ -27,17 +27,21 @@
             </v-menu>
         </v-flex>
         </v-layout>
-        <v-flex xs12 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
-             <v-btn  class='text-xs-left mx-0 px-0' flat color="primary">金额:{{amount}}</v-btn>  
-                <v-btn  class='text-xs-rihgt px-0' primary @click='reset'>重置</v-btn>
-                <v-btn class='text-xs-rihgt px-0' color="info" @click='search'>过滤</v-btn> 
+        <v-layout wrap row>
+            <v-flex xs6 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
+                <v-btn  class='text-xs-right mx-0 px-0' flat color="primary">余额:{{amount}}</v-btn>  
             </v-flex>
+            <v-flex xs6 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" justify-end>
+                <v-btn small round  class='text-xs-rihgt px-0 mx-0'  @click='reset'>重置</v-btn>
+                <v-btn small round  class='text-xs-rihgt px-0 ' color="info" @click='search'>过滤</v-btn> 
+            </v-flex>
+        </v-layout>
         <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
             <template slot-scope='props' slot='items'> 
                 <tr>
                     <td class="px-0">{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss")}}</td>
                     <td> {{ props.item.type|prizeTypeFilter}}</td>
-                    <td> {{ props.item.amount|currency}}</td>
+                    <td> {{ props.item.amount_}}</td>
                 </tr>
             </template>
         </k-table>
@@ -88,7 +92,9 @@ export default {
                         }
                     })
                     this.pageCofig.length = Math.ceil(data.count/12) 
-                    this.list.items = data.records
+                    this.list.items = data.records.map(v=>{
+                        return {...v,amount_:this.$amountTypeFilter("mbr",this.$currency( v.amount), v.type)}
+                    })
                     this.getTotal(params);
                 } catch (error) {}
             }else{}

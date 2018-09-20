@@ -3,10 +3,10 @@
         <v-tab ripple> 会员下注</v-tab>
         <v-tab ripple> 游戏收注</v-tab>
         <v-tab-item >
-           <Rank  @getList='list' :tableData='tableData'></Rank>
+           <Rank  @getList='list' :tableData='tableData'  tabActive='1'></Rank>
         </v-tab-item>
         <v-tab-item >
-            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" ></Rank>
+            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" column="游戏" ></Rank>
         </v-tab-item>
     </v-tabs>
 </template>
@@ -19,7 +19,7 @@
          return{
              tableData:[],
              tableData1:[],
-             active:1,
+             active:0,
              headers1: [
                 { text: '游戏', align: 'center',sortable: false,},
                 { text: '收注', align: 'center', sortable: false},

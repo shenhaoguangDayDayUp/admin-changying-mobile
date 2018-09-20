@@ -27,7 +27,7 @@ export var chartMixin = {
                 value: '720',
                 text: '30天'
                 }],
-            value: '', // 日期select初始值
+            value: '6小时', // 日期select初始值
             application:'',  // 游戏select初始值
             requestID:6,
             autoResize:true,

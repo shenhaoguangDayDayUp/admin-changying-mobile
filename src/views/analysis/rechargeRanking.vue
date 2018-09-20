@@ -1,8 +1,9 @@
 <template>
       <v-tabs v-model="active" color="transparent" dark slider-color="#1976d2">
+          <!-- <v-select :items="states" v-model="e2"  ></v-select> -->
         <v-tab ripple> 充值排行榜</v-tab>
         <v-tab-item >
-           <Rank  @getList='list' :tableData='tableData'></Rank>
+           <Rank  @getList='list' :tableData='tableData' tabActive="0"></Rank>
         </v-tab-item>
     </v-tabs>
 </template> 
@@ -19,6 +20,20 @@
              activeName:'mbrRechargeRank',
              tableData:[],
              active:1,
+        // e2: 'Texas',
+        // items: [
+        //   { text: 'State 1' },
+        //   { text: 'State 2' },
+        //   { text: 'State 3' },
+        //   { text: 'State 4' },
+        //   { text: 'State 5' },
+        //   { text: 'State 6' },
+        //   { text: 'State 7' }
+        // ],
+        // states: [
+        //   'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
+        //   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+        // ]
          }
      },
      methods:{

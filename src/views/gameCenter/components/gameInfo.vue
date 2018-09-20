@@ -23,17 +23,20 @@
         </v-tab-item>
         <v-tab-item > <!--游戏icon-->
             <v-flex  xs4 d-flex >
-              <v-card flat tile class="d-flex">
-                <v-img :src="imageUrl"></v-img>
+              <v-card style="height:100px;">
+                <img :src="imageUrl" alt="" style="width:100%;height:100%;">
               </v-card>
             </v-flex>
         </v-tab-item>
         <v-tab-item > <!--游戏轮播-->
-            <v-flex  xs6 d-flex v-for="(v,i) in bannerImageUrl" :key="i">
-              <v-card flat tile class="d-flex">
-                <v-img :src="v"></v-img>
-              </v-card>
-            </v-flex>
+            <v-layout row wrap>
+                <v-flex  xs6  v-for="(v,i) in bannerImageUrl" :key="i" style="padding:4px;">
+                    <v-card  style="height:100px; border-radius:5px;">
+                         <!-- <v-img :src="v"></v-img> -->
+                         <img :src="v" alt="" style="width:100%;height:100%;">
+                    </v-card>
+                </v-flex>
+            </v-layout>
         </v-tab-item>
     </v-tabs>
     
@@ -64,16 +67,14 @@ export default {
                 }, {
                     headers: { 'x-auth-token': common.getCommon() }
                 })
-                this.list = {'游戏编号:': data.code,'游戏密码:':data.password,'游戏名称:':data.name,'游戏描述:':data.description,'游戏链接:':data.link};
+                this.list = {'编号:': data.code,'密码:':data.password,'名称:':data.name,'描述:':data.description,'链接:':data.link};
                 this.costList = {'返奖率:':data.prizepoolPct,'发行率:':data.issuancePct,'公益率:':data.welfarePct};
                 this.imageUrl = config.imgUrl[config.env.NODE_ENV] + data.icon;
                 this.bannerImageUrl = [];
                 data.banners.split(',').forEach((v, i) => {
-                    if(v){
                         const element = config.imgUrl[config.env.NODE_ENV] + v;
                         this.bannerImageUrl.push(element);
-                    }
-                })
+                    })
                 console.log(this.bannerImageUrl)
             } catch (error) {}
         },

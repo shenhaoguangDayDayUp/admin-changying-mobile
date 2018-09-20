@@ -1,21 +1,23 @@
 <template>
     <div class="Rank">
-        <v-select v-show="selectShow" :items="options" label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)"></v-select>
+        <v-select v-show="selectShow" :items="options"  label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)"></v-select>
          <div class="refresh"  v-show="selectShow"><i :class="icon" @click="getList()"></i></div> 
          <!--数据分析模块排行表-->
         <v-data-table :headers="headers" :items="tableData" hide-actions class="elevation-1" v-if="rankTable">
             <template slot="items" slot-scope="props" > 
-                <td>{{ props.item.x }}</td>
-                <td>{{ props.item.y }}</td>
+                <tr  @click='rowClick(props)'>
+                    <td >{{ props.item.x }}</td>
+                    <td>{{ props.item.y }}</td>
+                </tr>
             </template>
         </v-data-table>
         <!--用户收货地址表-->
-        <v-data-table :headers="headers" :items="tableData" hide-actions  :expand="true" class="elevation-1" v-else >
+        <v-data-table :headers="headers" :items="tableData" hide-actions  :expand="true" class="elevation-1" v-else style="height:200px;overflow-y:scroll;" >
             <template slot="items" slot-scope="props">
-                <td>{{ props.item.isfavorite }}</td>
-                <td>{{ props.item.name }}</td>
-                <td>{{ props.item.mobileNumber }}</td>
-                <td>{{ props.item.address}}</td>
+                <td class="px-1">{{ props.item.isfavorite }}</td>
+                <td class="px-0">{{ props.item.name }}</td>
+                <td class="px-0">{{ props.item.mobileNumber }}</td>
+                <td class="px-3">{{ props.item.address}}</td>
             </template>
         </v-data-table>
     </div>
@@ -56,6 +58,14 @@ export default {
         rankTable:{
             type:Boolean,
             default:true
+        },
+        column:{
+            type:String,
+            default:'手机号'
+        },
+        tabActive:{
+            type:String,
+            default:'0'
         }
     },
     mounted(){
@@ -69,21 +79,19 @@ export default {
         getList(){
             this.$emit('getList',this.requestId);
         },
-        rowClick(row, event, column) { //进入用户详情
-            console.log('rowClick');
-            console.log(row);
-            console.log(event);
-            console.log(column);
-            switch (column.label) { 
+        rowClick(props) { //进入用户详情
+            console.log(props);
+            switch (this.column) { 
                 case '手机号':
-                    this.$router.push({path:'/mbrDetail',query:{code:row.x,active:this.tabActive}})
+                    this.$router.push({name:'会员详情',params:{code:props.item.x}})
+                    // this.$router.push({name:'会员详情',params:{code:props.item.x},query:{active:this.tabActive}})
                     break;
                 case '游戏':
-                    this.$router.push({path:'/gameDetail',query:{code:row.z,active:this.tabActive}})
-                    break;
+                    this.$router.push({name:'游戏详情',params:{code:props.item.z}})
+                    // this.$router.push({name:'游戏详情',params:{code:props.item.z},query:{active:this.tabActive}})
+                    break;    
                 case '商品':
-                    this.$router.push({path:`/priceInfo/${row.z}`})
-
+                    break;
             }
         },
      }
