@@ -31,7 +31,8 @@ export var chartMixin = {
             application:'',  // 游戏select初始值
             requestID:6,
             autoResize:true,
-            placeholderTime:'默认 6小时内'
+            placeholderTime:'6小时',
+            placeholderGame:'全部'
         }
     },
     mounted(){

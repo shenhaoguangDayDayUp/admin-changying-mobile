@@ -1,6 +1,6 @@
 <template>
     <div class="Rank">
-        <v-select v-show="selectShow" :items="options"  label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)"></v-select>
+        <v-select v-show="selectShow" :items="options"  label="时间" menu-props="auto" v-model="value"  item-text="label" item-value="value" @change="selectChange(value)" :placeholder="placeholderTime"></v-select>
          <div class="refresh"  v-show="selectShow"><i :class="icon" @click="getList()"></i></div> 
          <!--数据分析模块排行表-->
         <v-data-table :headers="headers" :items="tableData" hide-actions class="elevation-1" v-if="rankTable">
@@ -30,6 +30,7 @@ export default {
         return{
              icon:'fa fa-sync-alt', //刷新
              requestId:6,
+             placeholderTime:'6小时'
         }
     },
     props: { //在子组件中不能改变，只能接收，所以selectChange不能被分出去，因为val带不走。因为默认的时间都是6小时，所以直接在子组建写死data requestId:6这样也ok.
