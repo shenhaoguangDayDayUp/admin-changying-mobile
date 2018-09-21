@@ -66,12 +66,7 @@
         </v-date-picker>
       </v-menu>
     </v-flex>
-      <v-flex xs12
-                    sm5
-                    md3
-                    offset-sm1
-                    offset-md1
-                    offset-lg1>
+      <v-flex xs12  md5>
                 <v-select v-model='queryParams.application'
                              :items="gameList"
                                item-text="name"
@@ -93,11 +88,11 @@
         <v-btn small
                round
                mx-0
-               class='text-xs-rihgt px-0'
+               class='text-xs-right px-0'
                primary
                @click='reset'>重置</v-btn>
         <v-btn small
-               class='text-xs-rihgt px-0 mx-0'
+               class='text-xs-right px-0 mx-0'
                color="info"
                round
                @click='search'>过滤</v-btn>
@@ -113,7 +108,7 @@
                                <td class="px-0">{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
                    <td class="text-xs-center px-0">{{ props.item.application }}</td>
         <td style='color:blue' @click.stop='gotoItem(props.item.sender.code )' class="text-xs-center">{{ props.item.sender.code }}</td>
-        <td class="text-xs-right">{{ props.item.amount|currency }}</td>
+        <td class="text-xs-center">{{ props.item.amount|currency }}</td>
                           </tr>
        
                         </template>
