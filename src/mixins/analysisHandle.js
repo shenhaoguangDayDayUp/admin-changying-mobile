@@ -16,16 +16,16 @@ export var chartMixin = {
                 text: '12小时'
                 }, {
                 value: '24',
-                text: '1天'
+                text: '今天'
                 }, {
                 value: '168',
-                text: '7天'
+                text: '最近7天'
                 }, {
                 value: '360',
-                text: '15天'
+                text: '最近15天'
                 }, {
                 value: '720',
-                text: '30天'
+                text: '最近30天'
                 }],
             value: '6小时', // 日期select初始值
             application:'',  // 游戏select初始值
@@ -220,14 +220,12 @@ export var chartMixin = {
             });
         },
         goto(page){
-            // start:this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd'),
-
             const end = this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd');
             const start = this.$dateFilter((Date.parse(new Date())), 'yyyy-MM-dd');
-            if(this.requestID<25){
+            if(this.value<25){ 
                 this.$router.push({path:page,query:{start:start,end:end,index:1}});
             }else{
-                this.$router.push({path:page,query:{start:this.$dateFilter(new Date(new Date().getTime() - this.requestID/24 * 24 * 3600 * 1000), 'yyyy-MM-dd'),end:end,index:1}})
+                this.$router.push({path:page,query:{start:this.$dateFilter(new Date(new Date().getTime() - this.value/24 * 24 * 3600 * 1000), 'yyyy-MM-dd'),end:end,index:1}})
             }     
         },
     }

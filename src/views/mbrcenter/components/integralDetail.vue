@@ -29,11 +29,11 @@
         </v-layout>
         <v-layout wrap row>
             <v-flex xs6 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
-                <v-btn  class='text-xs-right mx-0 px-0' flat color="primary">余额:{{amount}}</v-btn>  
+                <v-btn  class='text-xs-right mx-0 px-0' flat color="primary">余额:{{amount|currency}}</v-btn>  
             </v-flex>
             <v-flex xs6 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" justify-end>
-                <v-btn small round  class='text-xs-rihgt px-0 mx-0'  @click='reset'>重置</v-btn>
-                <v-btn small round  class='text-xs-rihgt px-0 ' color="info" @click='search'>过滤</v-btn> 
+                <v-btn small round  class='text-xs-right px-0 mx-0'  @click='reset'>重置</v-btn>
+                <v-btn small round  class='text-xs-right px-0 ' color="info" @click='search'>过滤</v-btn> 
             </v-flex>
         </v-layout>
         <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
@@ -83,7 +83,6 @@ export default {
    methods:{
         //交易
         async getList(params = Object.assign({}, this.tableParams, this.queryParams)) {
-            console.log(params);
             if(params.start&&params.end){
                 try {
                     const { data} = await integralApi.integralList(Object.assign({},{id:this.$route.params.code},{start:this.$date(params.start, "start"),end:this.$date(params.end, "end"),index:params.index}), {
@@ -95,18 +94,18 @@ export default {
                     this.list.items = data.records.map(v=>{
                         return {...v,amount_:this.$amountTypeFilter("mbr",this.$currency( v.amount), v.type)}
                     })
-                    this.getTotal(params);
+                    this.getTotal();
                 } catch (error) {}
             }else{}
         },
-        async getTotal(params) {
+        async getTotal() {
              try {
                 const {data} = await integralApi.integralRest({ id: this.$route.params.code, }, {
                     headers: {
                         'x-auth-token': common.getCommon()
                     }
                 })
-                this.ammount = this.$currency(data);
+                this.amount = data;
             } catch (error) {}
         },  
     }

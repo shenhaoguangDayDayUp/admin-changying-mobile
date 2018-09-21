@@ -12,7 +12,8 @@
             </template>
         </v-data-table>
         <!--用户收货地址表-->
-        <v-data-table :headers="headers" :items="tableData" hide-actions  :expand="true" class="elevation-1" v-else style="height:200px;overflow-y:scroll;" >
+        <div v-else  > 
+            <v-data-table :headers="headers" :items="tableData" hide-actions  :expand="true" class="elevation-1"  style="height:200px;overflow-y:scroll;">
             <template slot="items" slot-scope="props">
                 <td class="px-1">{{ props.item.isfavorite }}</td>
                 <td class="px-0">{{ props.item.name }}</td>
@@ -20,6 +21,8 @@
                 <td class="px-3">{{ props.item.address}}</td>
             </template>
         </v-data-table>
+        </div>
+        
     </div>
 </template>
 <script>
@@ -67,10 +70,16 @@ export default {
         tabActive:{
             type:String,
             default:'0'
+        },
+        toggle:{
+            type:Boolean,
+            default:false
         }
     },
     mounted(){
          this.getList();
+         console.log('tabactive')
+         console.log(this.tabActive)
      },
      methods:{
         selectChange(val) { 
@@ -84,12 +93,12 @@ export default {
             console.log(props);
             switch (this.column) { 
                 case '手机号':
-                    this.$router.push({name:'会员详情',params:{code:props.item.x}})
-                    // this.$router.push({name:'会员详情',params:{code:props.item.x},query:{active:this.tabActive}})
+                    // this.$router.push({name:'会员详情',params:{code:props.item.x}})
+                    this.$router.push({name:'会员详情',params:{code:props.item.x},query:{active:this.tabActive,toggle:this.toggle}})
                     break;
                 case '游戏':
-                    this.$router.push({name:'游戏详情',params:{code:props.item.z}})
-                    // this.$router.push({name:'游戏详情',params:{code:props.item.z},query:{active:this.tabActive}})
+                    // this.$router.push({name:'游戏详情',params:{code:props.item.z}})
+                    this.$router.push({name:'游戏详情',params:{code:props.item.z},query:{active:this.tabActive}})
                     break;    
                 case '商品':
                     break;
