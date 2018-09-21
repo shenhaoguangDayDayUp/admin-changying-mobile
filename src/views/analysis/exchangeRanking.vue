@@ -2,14 +2,9 @@
     <v-tabs v-model="active" color="transparent" dark slider-color="#1976d2">
         <v-tab ripple> 兑换排行榜</v-tab>
         <v-tab-item >
-           <Rank  @getList='list' :tableData='tableData'></Rank>
+           <Rank  @getList='list' :tableData='tableData' column="商品"></Rank>
         </v-tab-item>
     </v-tabs>
-    <!-- <el-tabs class="prizeRank"  v-model="activeName">
-        <el-tab-pane label="兑换排行榜" name="mbrRechargeRank" v-loading="loading">
-            <keep-alive><Rank v-if="activeName=='mbrRechargeRank'" @getList='list'  :tableData='tableData' labelX='商品' labelY='积分'></Rank></keep-alive>
-        </el-tab-pane>
-    </el-tabs> -->
 </template> 
  <script>
  import {chartApi} from '@/api/api';

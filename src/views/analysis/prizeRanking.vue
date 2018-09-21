@@ -6,7 +6,7 @@
            <Rank  @getList='list' :tableData='tableData' :headers="headers"></Rank>
         </v-tab-item>
         <v-tab-item >
-            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" :rankTable="false"></Rank>
+            <Rank  @getList='list1' :tableData='tableData1' :headers="headers1" column="游戏"></Rank>
         </v-tab-item>
     </v-tabs>
 </template>

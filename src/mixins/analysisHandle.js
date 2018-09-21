@@ -27,11 +27,12 @@ export var chartMixin = {
                 value: '720',
                 text: '30天'
                 }],
-            value: '', // 日期select初始值
+            value: '6小时', // 日期select初始值
             application:'',  // 游戏select初始值
             requestID:6,
             autoResize:true,
-            placeholderTime:'默认 6小时内'
+            placeholderTime:'6小时',
+            placeholderGame:'全部'
         }
     },
     mounted(){

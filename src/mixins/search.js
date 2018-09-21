@@ -31,6 +31,8 @@ export function searchOrReset(tableParams, queryParams, type) {
 export var mixin = {
     mounted() {
         if (this.$route.query.index) {
+            console.log(9999999999)
+            console.log(this.$route)
             for (var key in this.$route.query) {
                 console.log(key)
                 if (key == 'end' || key == 'start') {
@@ -66,6 +68,8 @@ export var mixin = {
     created() {
         // this.$nextTick(()=>{
             if(!this.$route.query.start){
+                console.log(88888888888)
+                console.log(this.$route)
                 var date1 = new Date();
                 var date2 = new Date();
                 if(this.$route.name == '游戏详情' || this.$route.name == '会员详情'){ //默认显示一个月的数据
@@ -75,7 +79,7 @@ export var mixin = {
                 }
                 date1 = this.$dateFilter(date1,'yyyy-MM-dd')
                 date2 = this.$dateFilter(date2,'yyyy-MM-dd')
-                this.$router.push({ path: this.$route.path, query: { start: String(date1), end: String(date2), index: this.$route.query.index || 1 } });
+                this.$router.push({ path: this.$route.path, query: { start: String(date1), end: String(date2), index: this.$route.query.index || 1 ,active:this.$route.query.active,toggle:this.$route.query.toggle}});// active是数据分析跳转会员详情或游戏详情展示哪一个tab用的
             }
 
            

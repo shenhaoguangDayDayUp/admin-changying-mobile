@@ -62,16 +62,16 @@ export default {
   .Rank .theme--light.v-text-field .v-input__slot:before{
         border-color: rgba(0,0,0,0.12);
   }
-  .Rank .v-label{
+  /* .Rank .v-label{
     font-size: 13px;
     padding-left:12px;
-  }
-  .Rank .v-input{
+  } */
+  /* .Rank .v-input{
     font-size: 13px;
-  }
-  .Rank .v-select__selection--comma{
+  } */
+  /* .Rank .v-select__selection--comma{
     margin-left:8px;
-  }
+  } */
   .v-list__tile__action{
       min-width: 20px;
   }
@@ -93,4 +93,11 @@ export default {
             -webkit-transition:all .2s ease-in 0s; /* Safari and Chrome */
             -o-transition:all .2s ease-in 0s; /* Opera */
             }
+    .v-label {
+    font-size: 16px;
+    /* padding-left: 12px; */
+}
+  .v-input{
+      font-size: 13px;
+    }
 </style>

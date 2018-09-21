@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-select :items="options" label="时间" menu-props="auto" v-model="value"></v-select>
+        <v-select :items="options" label="时间" menu-props="auto" v-model="value" :placeholder="placeholderTime"></v-select>
         <v-flex xs12 sm5 md3 offset-sm1 offset-lg1 class="btn-layout" >
                 <v-btn class='text-xs-right' primary @click='reset'>重置</v-btn>
                 <v-btn class='text-xs-right' color="info" @click='search'>过滤</v-btn>

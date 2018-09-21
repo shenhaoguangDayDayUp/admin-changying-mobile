@@ -20,7 +20,7 @@ export var rankingMixin = {
                 value: '720',
                 label: '30天'
                 }],
-            value: '',
+            value: '6小时',
             requestID:6,
         }
     },

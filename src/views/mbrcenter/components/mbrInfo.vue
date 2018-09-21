@@ -31,9 +31,9 @@ export default {
             list:{},
             headers: [
                 { text: '默认地址', align: 'center',sortable: false,},
-                { text: '  姓 名 ', align: 'center', sortable: false},
-                { text: ' 手 机 号', align: 'center',sortable: false,},
-                { text: '    收 货 地 址    ', align: 'center', sortable: false},
+                { text: '姓名', align: 'center', sortable: false},
+                { text: '手机号', align: 'center',sortable: false,},
+                { text: '收货地址', align: 'center', sortable: false},
             ],
         };
     },
@@ -53,7 +53,7 @@ export default {
                         'x-auth-token': common.getCommon()
                     }
                 })
-                this.list = {'手机号:': data.mobileNubmer,'姓名:':data.name,'昵称:':data.nickname,'一卡通:':'','身份证:':data.idCardNumber,'等级:':data.level,'贵宾:':(data.vip==1?'是':'否'),'黑名单:':(data.status=='SUSPEND'?'是':'否'),'状态:':this.$statusFilter(data.status)};
+                this.list = {'手机号:': data.mobileNumber,'姓名:':data.name,'昵称:':data.nickname,'一卡通:':'','身份证:':data.idCardNumber,'等级:':data.level,'贵宾:':(data.vip==1?'是':'否'),'黑名单:':(data.status=='SUSPEND'?'是':'否'),'状态:':this.$statusFilter(data.status)};
                 this.addressTableData = data.receivers.map(v=>{
                     return {...v,isfavorite:this.$defaultAddressFilter(v.favorite),address:v.province+v.city+v.district+v.street}
                 });

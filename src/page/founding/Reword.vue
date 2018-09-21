@@ -103,7 +103,6 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12>
-             
                     <k-table @pageChage='handleCurrentChange' :tableSource='list' :pageCofig='pageCofig' :page.sync='page'>
                       <template slot-scope='props'   slot='items'>
                           <tr @click='gotoRow(props)'>
