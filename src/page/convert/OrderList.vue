@@ -252,7 +252,7 @@ export default {
   data() {
     return {
       active: "",
-      tab: ["代付款", "待收货", "全部"],
+      tab: ["待付款", "待收货", "全部"],
       amount: 0,
       queryParams: {
         start: "",
