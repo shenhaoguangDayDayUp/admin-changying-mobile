@@ -100,4 +100,10 @@ export default {
   .v-input{
       font-size: 13px;
     }
+    .Rank .v-table__overflow{
+      background: #fff;
+      overflow-y: auto;
+      height:200px;
+      position:relative;
+    }
 </style>

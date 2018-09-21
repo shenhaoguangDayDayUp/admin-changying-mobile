@@ -38,6 +38,7 @@ const router =new Router({
         active:false,
         component: Home,
         name: '数据分析',
+        redirect: '/rechargeTotalNumberChart', 
         id:7, 
         iconCls: 'fas fa-chart-line',
         children: [
