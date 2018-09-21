@@ -62,7 +62,9 @@ const router =new Router({
         redirect: '/mbrList', 
         children: [
             { active:false, path: '/mbrList',menuShow:true, component: ()=>import('../views/mbrcenter/mbrList.vue'), name: '会员名单',parentId:1,id:11 },
-            {active:false,  path: '/mbrDetail/:code', menuShow:false,component: ()=>import('../views/mbrcenter/mbrDetail.vue'), name: '会员详情',parentId:11 ,id:16,parentId1:10,parentId2:13},// 会员、贵宾、黑名单共用一个会员详情
+            { active:false, path: '/blackList',menuShow:true, component: ()=>import('../views/mbrcenter/blackList'), name: '黑名单',parentId:1 ,id:13 },
+            { active:false, path: '/vipList',menuShow:true, component: ()=>import('../views/mbrcenter/vipList'), name: '贵宾名单',parentId:1,id:10  },
+            {active:false,  path: '/mbrDetail/:code', menuShow:false,component: ()=>import('../views/mbrcenter/mbrDetail.vue'), name: '会员详情',id:16,parentId:11 ,parentId1:10,parentId2:13},// 会员、贵宾、黑名单共用一个会员详情
         ]
     },
     {
