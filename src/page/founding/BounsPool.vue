@@ -11,13 +11,11 @@
 
            
     <v-flex xs12
-                    sm5
-                    md3
-                    offset-sm1
+                  
               
                
-                    offset-lg1 class="btn-layout" >
-             <v-btn class='text-xs-riht' flat color="primary">合计:{{amount}}</v-btn>  
+                    class="btn-layout" >
+             <v-btn class='text-xs-right' flat color="primary">合计:{{amount}}</v-btn>  
  
 
             </v-flex>
@@ -31,7 +29,7 @@
                           <tr @click='gotoRow(props)'>
                                 <td class="text-xs-center">{{ props.item.code }}</td>
                              <td  class="text-xs-center px-0" style='width:300px;color:blue'>{{ props.item.owner.name}}</td>
-        <td class="text-xs-right">{{ props.item.balance|currency }}</td>
+        <td class="text-xs-center">{{ props.item.balance|currency }}</td>
                           </tr>
        
                         </template>

@@ -4,5 +4,9 @@ const getters = {
     defaultAvatar: state => state.app.defaultAvatar,
     goodsList:state => state.app.goodsList,
     routes:state => state.app.routes,
+    getDistrict :state =>  state.app.district
+    
+        
+    
 }
 export default getters

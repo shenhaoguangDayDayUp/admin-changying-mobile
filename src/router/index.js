@@ -80,6 +80,7 @@ const router =new Router({
             {active:false,  path: '/gameDetail/:code',menuShow:false, component: ()=>import('../views/gameCenter/gameDetail'), name: '游戏详情',parentId:20,id:21},
         ]
     },
+
     {
       path: '/',
       component: Home,
@@ -101,6 +102,21 @@ const router =new Router({
       ]
 
   },
+  {
+    path: '/',
+    component: Home,
+    active:false, 
+    name: '兑换中心',
+    redirect:'/priceList',
+    id:4,
+    iconCls: 'fas fa-exchange-alt',
+    children: [
+        {active:false, path: '/priceList',menuShow:true, component: ()=>import('../page/convert/RewordList.vue'), name: '奖品清单',parentId:4,id:40},
+        {active:false, path: '/orderList',menuShow:true, component: ()=>import('../page/convert/OrderList.vue'), name: '订单列表',parentId:4,id:41},
+        {active:false, path: '/orderDetail/:id',menuShow:false, component: ()=>import('../page/convert/OrderDetail.vue'), name: '订单详情',parentId:41,id:43},
+    
+    ]
+},
 //   {
 //     path: '/',
 //     component: Home,

@@ -67,11 +67,8 @@
       </v-menu>
     </v-flex>
       <v-flex xs12
-                    sm5
-                    md3
-                    offset-sm1
-                    offset-md1
-                    offset-lg1>
+                   md5
+                    >
                 <v-select v-model='queryParams.application'
                              :items="gameList"
                                item-text="name"
@@ -113,7 +110,7 @@
                           <td class="text-xs-center ">{{ props.item.code }}</td>
                    <td class="text-xs-center px-0">{{ props.item.application }}</td>
         <td style='color:blue' @click.stop='gotoItem(props.item.receiver.code )' class="text-xs-center">{{ props.item.receiver.code }}</td>
-        <td class="text-xs-right">{{ props.item.amount|currency }}</td>
+        <td class="text-xs-center">{{ props.item.amount|currency }}</td>
                           </tr>
        
                         </template>

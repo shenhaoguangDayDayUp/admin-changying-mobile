@@ -112,7 +112,7 @@
               <td style='color:blue'
                   @click.stop='gotoItem(props.item )'
                   class="text-xs-center">{{ props.item.type == "BET"?props.item.sender.code:props.item.receiver.code }}</td>
-              <td class="text-xs-right">{{ props.item.amount|currency }}</td>
+              <td class="text-xs-center">{{ props.item.amount|currency }}</td>
             </tr>
 
           </template>

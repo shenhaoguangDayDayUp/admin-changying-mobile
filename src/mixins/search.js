@@ -147,6 +147,7 @@ export var mixin = {
 
             this.$router.push({ path: this.$route.path, query: query });
             if ((this.queryParams.start && this.queryParams.end)) {
+                    console.log(this.$route.query)
                 this.getList(this.$route.query);
             } else {
                 return this.$message.error('日期不能为空')

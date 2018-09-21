@@ -100,7 +100,7 @@
                           <tr @click='gotoRow(props)'>
                                   <td  style='width:300px'>{{ props.item.updateAt|dateFilter( "yyyy-MM-dd hh:mm:ss") }}</td>
         <td style='color:blue' @click.stop='gotoItem(props.item.sender.code )' class="text-xs-center">{{ props.item.sender.code }}</td>
-        <td class="text-xs-right">{{ props.item.amount|currency }}</td>
+        <td class="text-xs-center">{{ props.item.amount|currency }}</td>
                           </tr>
        
                         </template>
