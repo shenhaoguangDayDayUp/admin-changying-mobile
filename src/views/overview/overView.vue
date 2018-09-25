@@ -30,7 +30,7 @@
             return {
                 iconArr:['fas fa-user','fas fa-gamepad', 'fas fa-exchange-alt','fa fa-coins','fa fa-piggy-bank','fas fa-tree','fa fa-yen-sign','fa fa-wallet','fa fa-gift'],
                 colorArr:['#40c9c6','#40c9c6','#40c9c6','#36a3f7','#36a3f7','#36a3f7','#B6A2DE','#B6A2DE','#B6A2DE'],
-                pushArr:['会员名单','游戏清单','','奖金池','发行费','公益金','充值','下注','奖金'], // 需跳转的页面
+                pushArr:['会员名单','游戏清单','奖品清单','奖金池','发行费','公益金','充值','下注','奖金'], // 需跳转的页面
                 queryArr:[0,0,0,0,0,0,1,1,1], //需不需要带时间查询字符串
                 dataArr:[],
                 infoArr: [],

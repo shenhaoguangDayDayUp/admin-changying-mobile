@@ -236,27 +236,20 @@ export default {
         console.log(1111111111111)
         console.log(val)
         console.log(oldVal)
-             var list =[]
+        if(oldVal&&oldVal.name=='会员详情'&&val.name=='会员详情'){}else{ //路由在本页面跳转
+          var list =[]
         this.$nextTick(res=>{
            this.findActive(this.$route.name,this.$router.options.routes,(res)=>{
             if(res.leaf){ //总览
               this.breadcrumbs = [{text:res.name,disabled:false}]
             }else{
+              console.log('res')
+              console.log(res)
               let dad = res.parentId; 
-              if(oldVal){
-                  
+              if(oldVal){ // 会员详情是会员、贵宾、黑名单公用，面包屑需要处理
+                if(oldVal.name == "贵宾名单"){dad = res.parentId1 || res.parentId;console.log(dad)}
+                else if(oldVal.name == "黑名单"){dad = res.parentId2|| res.parentId}
               }
-              // if(oldVal){ // 会员详情是会员、贵宾、黑名单公用，面包屑需要处理
-              // console.log('res')
-              // console.log(res)
-              //   console.log('old')
-              //   console.log(oldVal.name)
-              //   if(oldVal.name == "贵宾名单"){dad = res.parentId1;console.log(dad)}
-              //   else if(oldVal.name == "黑名单"){dad = res.parentId2}
-              // }
-              // if(oldVal.name)
-              // console.log('oldVal')
-              // console.log(dad)
                 this.findParent(dad,this.$router.options.routes,(arr)=>{
                // 面包屑
                 this.breadList = [...arr,res];// 合并数组
@@ -284,6 +277,9 @@ export default {
             })
 
         })
+        }
+          
+        
       },
       immediate: true,
       deep: true

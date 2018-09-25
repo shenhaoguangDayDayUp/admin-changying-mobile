@@ -18,7 +18,7 @@
                 <td class="px-1">{{ props.item.isfavorite }}</td>
                 <td class="px-0">{{ props.item.name }}</td>
                 <td class="px-0">{{ props.item.mobileNumber }}</td>
-                <td class="px-3">{{ props.item.address}}</td>
+                <td class="px-1">{{ props.item.address}}</td>
             </template>
         </v-data-table>
         </div>
