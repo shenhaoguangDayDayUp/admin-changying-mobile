@@ -216,8 +216,6 @@ export default {
                    
                 }).filter(item=>item.text)
                 },list)
-                console.log(1111)
-                console.log(this.breadcrumbs)
             }
                 this.$vuetify.goTo('#app', {duration: 300,offset:-100,easing: 'easeInOutCubic'})
    
