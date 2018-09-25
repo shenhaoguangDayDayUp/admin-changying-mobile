@@ -4,10 +4,11 @@
             <v-navigation-drawer app
                                  enable-resize-watcher
                                  v-model='drawer'>
-                <v-list dense
+
+                <v-list style="overflow-y: hidden;height:80%" dense
                         two-line>
-                         
-                     <template v-for="item in $router.options.routes">
+                    <div style="overflow:auto;height:100%">
+                        <template v-for="item in $router.options.routes">
                        <v-list-tile v-if="item.leaf" :key="item.name" :to="item.children[0].path">
                          <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
                           <v-list-tile-action> <i :class="item.iconCls"></i> </v-list-tile-action>
@@ -67,11 +68,14 @@
                         </v-list-group>
                         
                        </template>  
-                     <v-list-tile @click='dialog=true'>
+                     <v-list-tile class="logout" @click='dialog=true'>
                          <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
                           <v-list-tile-action> <i class="fa fa-sign-out-alt"></i> </v-list-tile-action>
                           <v-list-tile-content>登出</v-list-tile-content>
                         </v-list-tile>
+                      </div>    
+                         
+                   
                     
                 </v-list>
 
@@ -348,6 +352,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+  .logout{
+     position: absolute;
+    bottom: 30px;
+    left: 0px;
+    right: 0px;
+    text-align: left;
+    padding-left: 20px;
+    width: 210px;
+    margin-right: auto;
+    cursor: pointer;
+  }
 
 </style>
 
