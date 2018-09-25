@@ -67,7 +67,11 @@
                         </v-list-group>
                         
                        </template>  
-                    
+                     <v-list-tile @click='dialog=true'>
+                         <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
+                          <v-list-tile-action> <i class="fa fa-sign-out-alt"></i> </v-list-tile-action>
+                          <v-list-tile-content>登出</v-list-tile-content>
+                        </v-list-tile>
                     
                 </v-list>
 
@@ -79,15 +83,15 @@
                 <v-toolbar-title>
 
                 </v-toolbar-title>
-                <v-spacer></v-spacer>
-                <!-- <span class="mx-3">欢迎您 !{{userName}} </span> -->
-                <v-menu offset-y>
+              <v-spacer></v-spacer>
+                <!-- <span class="mx-3">欢迎您 !{{userName}} </span>  -->
+                <!-- <v-menu offset-y>
                     <v-btn icon
                            slot="activator">
                         <v-icon>face</v-icon>
-                        <!-- <v-icon>account</v-icon>   -->
-                        <!-- <v-icon>person</v-icon>   -->
-                        <!-- <v-icon>assignment return</v-icon>   -->
+                        <v-icon>account</v-icon>   
+                        <v-icon>person</v-icon>  
+                   <v-icon>assignment return</v-icon>  
 
                     </v-btn>
                     <v-list>
@@ -96,13 +100,13 @@
                         </v-list-tile>
                         <v-divider dark
                                    :key="1"></v-divider>
-                        <!-- <v-list-tile>
+                        <v-list-tile>
                             <v-list-tile-title>修改密码</v-list-tile-title>
-                        </v-list-tile> -->
+                        </v-list-tile>
                     </v-list>
 
-                </v-menu>
-            </v-toolbar>
+                </v-menu> -->
+             </v-toolbar> 
 
             <!-- <v-content> -->
                 <v-container fluid>
@@ -122,7 +126,20 @@
                    </v-layout>
 
                     <router-view></router-view>
+
+            <v-dialog v-model="dialog" persistent max-width="290">
+      <v-card>
+        <v-card-title class="headline text-xs-center">提示</v-card-title>
+        <v-card-text>是否登出?</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="dialog = false">取消</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="loginOut">确定</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
                 </v-container>
+
             <!-- </v-content> -->
             <!-- <v-footer app></v-footer> -->
         </v-app>
@@ -132,7 +149,7 @@
 </template>
 <script>
 import { common, user } from "@/logic";
-import { loginApi } from "@/api/api";
+import { loginApi,logoutApi } from "@/api/api";
 import { mapGetters } from "vuex";
 
 export default {
@@ -144,6 +161,27 @@ export default {
     ...mapGetters(["routes"])
   },
   methods: {
+    loginOut(){
+      this.logoutApi();
+    },
+   async logoutApi() {
+      try {
+        const { status } = await loginApi.logout(
+          sessionStorage.getItem("TOKEN")
+        );
+        // this.$message({
+        // 	type: 'success',
+        // 	message: '登出成功!'
+        // });
+        sessionStorage.removeItem("TOKEN");
+        this.$router.push("/login");
+        this.dialog = false;
+      } catch (error) {
+        this.$$Message.present.show('登出失败')
+        this.dialog = false;
+
+      }
+    },
     gotoBread(item){
       if(!item.disabled){
         console.log(5555)
@@ -231,6 +269,7 @@ export default {
   },
   data() {
     return {
+      dialog:false,
       breadcrumbs: [
         {
           text: "Dashboard",
