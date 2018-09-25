@@ -130,7 +130,7 @@
             <v-dialog v-model="dialog" persistent max-width="290">
       <v-card>
         <v-card-title class="headline text-xs-center">提示</v-card-title>
-        <v-card-text>是否登出?</v-card-text>
+        <v-card-text>是否登出确定登出?</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn depressed small @click.native="dialog = false">取消</v-btn>
