@@ -68,12 +68,13 @@
                         </v-list-group>
                         
                        </template>  
-                     <v-list-tile class="logout" @click='dialog=true'>
+                
+                      </div>  
+                           <v-list-tile class="logout" @click='dialog=true'>
                          <!-- <font-awesome-icon :icon="item.iconCls"></font-awesome-icon> -->
                           <v-list-tile-action> <i class="fa fa-sign-out-alt"></i> </v-list-tile-action>
                           <v-list-tile-content>登出</v-list-tile-content>
-                        </v-list-tile>
-                      </div>    
+                        </v-list-tile>  
                          
                    
                     
@@ -354,8 +355,6 @@ export default {
     left: 0px;
     right: 0px;
     text-align: left;
-    padding-left: 20px;
-    width: 210px;
     margin-right: auto;
     cursor: pointer;
   }
