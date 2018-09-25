@@ -4,8 +4,9 @@
             <v-navigation-drawer app
                                  enable-resize-watcher
                                  v-model='drawer'>
+          
 
-                <v-list style="overflow-y: hidden;height:80%" dense
+                   <v-list style="overflow-y: hidden;height:80%" dense
                         two-line>
                     <div style="overflow:auto;height:100%">
                         <template v-for="item in $router.options.routes">
@@ -79,6 +80,8 @@
                    
                     
                 </v-list>
+
+               
 
             </v-navigation-drawer>
             <v-toolbar app
