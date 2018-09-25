@@ -13,7 +13,7 @@
                         <v-layout row
                                   wrap>
                             <v-flex xs12>
-                                <span class="headline">登录</span>
+                                <span class="headline">长影娱乐-控制台</span>
                             </v-flex>
                         </v-layout>
                     </v-container>
