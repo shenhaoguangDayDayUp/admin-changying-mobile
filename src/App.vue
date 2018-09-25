@@ -109,4 +109,7 @@ export default {
       height:200px;
       position:relative;
     }
+    .overflow-y-hidden{
+      position:fixed;
+    }
 </style>
