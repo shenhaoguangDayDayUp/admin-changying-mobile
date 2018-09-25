@@ -133,8 +133,8 @@
         <v-card-text>是否登出?</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">取消</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="loginOut">确定</v-btn>
+          <v-btn depressed small @click.native="dialog = false">取消</v-btn>
+          <v-btn color="info darken-1" small  @click.native="loginOut">确定</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
