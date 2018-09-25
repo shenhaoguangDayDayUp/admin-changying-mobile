@@ -15,12 +15,12 @@
                       slot='items'>
 
               <tr @click='gotoRow(props)'>
-                <td class="text-xs-center">
+                <td class="text-xs-center px-0">
                   <img :src="props.item.imagePath"
                        alt="">
                 </td>
-                <td class="text-xs-center px-0">{{ props.item.name}}</td>
-                <td class="text-xs-center">{{ props.item.price|currency }}</td>
+                <td class="text-xs-center ">{{ props.item.name}}</td>
+                <td class="text-xs-center px-0">{{ props.item.price|currency }}</td>
                 <td class="text-xs-center px-0">{{ props.item.status|productStatus }}</td>
               </tr>
 
